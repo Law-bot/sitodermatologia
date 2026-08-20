@@ -702,6 +702,55 @@
     .cookie-banner-actions .btn{flex:1 1 auto;justify-content:center;}
   }
 
+  /* ---------- PRIVACY MODAL ---------- */
+  .privacy-modal-overlay{
+    position:fixed;inset:0;z-index:100010;
+    background:rgba(20,32,26,.75);
+    backdrop-filter:blur(4px);
+    -webkit-backdrop-filter:blur(4px);
+    display:flex;align-items:center;justify-content:center;
+    padding:24px;
+    opacity:0;visibility:hidden;
+    transition:opacity .35s var(--ease), visibility 0s linear .35s;
+  }
+  .privacy-modal-overlay.visible{
+    opacity:1;visibility:visible;
+    transition:opacity .35s var(--ease), visibility 0s linear 0s;
+  }
+  .privacy-modal{
+    background:var(--dark);color:rgba(255,255,255,.92);
+    border-radius:24px;
+    max-width:720px;width:100%;
+    max-height:85vh;overflow-y:auto;
+    padding:44px 40px;
+    position:relative;
+    box-shadow:0 30px 80px rgba(0,0,0,.5);
+    transform:translateY(16px);
+    transition:transform .35s var(--ease);
+  }
+  .privacy-modal-overlay.visible .privacy-modal{transform:translateY(0);}
+  .privacy-modal-close{
+    position:absolute;top:20px;right:20px;
+    width:36px;height:36px;border-radius:50%;
+    border:1px solid rgba(255,255,255,.2);
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;background:transparent;
+    transition:border-color .25s ease, background .25s ease;
+  }
+  .privacy-modal-close svg{width:16px;height:16px;stroke:currentColor;}
+  .privacy-modal-close:hover{border-color:var(--sage-light);background:rgba(255,255,255,.06);}
+  .privacy-modal h2{font-family:var(--serif);letter-spacing:0.02em;color:var(--paper);font-size:27px;margin:0 0 6px;padding-right:40px;}
+  .privacy-modal .privacy-updated{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--brass-light);margin-bottom:28px;}
+  .privacy-modal h3{font-family:var(--google-sans);font-weight:600;font-size:15px;color:var(--paper);margin:26px 0 8px;}
+  .privacy-modal h3:first-of-type{margin-top:0;}
+  .privacy-modal p, .privacy-modal li{font-family:var(--google-sans);font-size:13.5px;line-height:1.7;color:rgba(255,255,255,.72);}
+  .privacy-modal ul{margin:8px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:6px;}
+  .privacy-modal a{color:var(--sage-light);text-decoration:underline;}
+  body.modal-locked{overflow:hidden;}
+  @media (max-width:640px){
+    .privacy-modal{padding:32px 24px;border-radius:18px;}
+  }
+
   /* ---------- FAQ ---------- */
   .faq-panel{
     position:relative;
@@ -1568,7 +1617,7 @@
 
         <div class="consent-row">
           <input type="checkbox" id="consenso" name="consenso" required>
-          <label for="consenso" class="consent">Ho letto l'<a href="#">informativa sulla privacy</a> e acconsento al trattamento dei miei dati personali ai sensi del Regolamento UE 2016/679 (GDPR) per essere ricontattato dallo studio.</label>
+          <label for="consenso" class="consent">Ho letto l'<a href="#" class="privacy-modal-trigger">informativa sulla privacy</a> e acconsento al trattamento dei miei dati personali ai sensi del Regolamento UE 2016/679 (GDPR) per essere ricontattato dallo studio.</label>
         </div>
 
         <p class="form-note">Usa il modulo per una richiesta di informazioni o per concordare un appuntamento. Per richieste urgenti, è preferibile telefonare allo studio.</p>
@@ -1602,7 +1651,7 @@
         </div>
         <div class="footer-col">
           <h4>Legale</h4>
-          <a href="#">Privacy Policy</a>
+          <a href="#" class="privacy-modal-trigger">Privacy Policy</a>
           <a href="#" id="cookieSettingsLink">Preferenze cookie</a>
         </div>
       </div>
@@ -1784,6 +1833,48 @@
     </div>
   </div>
 
+  <!-- POPUP INFORMATIVA PRIVACY -->
+  <div class="privacy-modal-overlay" id="privacyModalOverlay">
+    <div class="privacy-modal" role="dialog" aria-modal="true" aria-labelledby="privacyModalTitle">
+      <button type="button" class="privacy-modal-close" id="privacyModalClose" aria-label="Chiudi informativa privacy">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <h2 id="privacyModalTitle">Informativa sulla privacy</h2>
+      <p class="privacy-updated">Ultimo aggiornamento: 20 agosto 2026</p>
+
+      <h3>Titolare del trattamento</h3>
+      <p>Dott. Sebastiano Recalcati — Studio DERMATOLOGICA, Via Raffaello Sanzio 5, 23900 Lecco (LC). Telefono 392 691 7777, email <a href="mailto:info@sebastianorecalcati.it">info@sebastianorecalcati.it</a>.</p>
+
+      <h3>Quali dati raccogliamo</h3>
+      <p>Quando ci contatti — telefonicamente, via email o tramite eventuali altri strumenti che il sito potrà mettere a disposizione in futuro — ci fornisci alcuni dati personali: ad esempio nome e cognome, recapito telefonico o email, ed eventuali informazioni relative al motivo della richiesta o alla tua situazione. Queste ultime possono indirettamente riferirsi a condizioni di salute: in tal caso rientrano tra le categorie particolari di dati personali (art. 9 del Regolamento UE 2016/679) e vengono trattate con la massima riservatezza, solo per organizzare la tua visita.</p>
+
+      <h3>Perché li trattiamo</h3>
+      <ul>
+        <li>Rispondere alle richieste di informazioni o prenotazione che ci invii</li>
+        <li>Organizzare e gestire gli appuntamenti presso lo studio</li>
+        <li>Adempiere a obblighi di legge, contabili e fiscali</li>
+      </ul>
+
+      <h3>Base giuridica del trattamento</h3>
+      <p>Il trattamento si fonda sul consenso esplicito che presti nel momento in cui ci contatti e, per gli eventuali dati relativi alla salute, sul consenso esplicito richiesto ai sensi dell'art. 9 del GDPR. Puoi revocare il consenso in qualsiasi momento contattandoci ai recapiti indicati sopra.</p>
+
+      <h3>Come conserviamo i dati</h3>
+      <p>I dati sono trattati con strumenti informatici e cartacei, adottando misure di sicurezza adeguate a prevenire accessi non autorizzati, perdita o diffusione. Sono conservati per il tempo necessario a evadere la richiesta e, qualora si instauri un rapporto di cura, per la durata prevista dagli obblighi di legge in materia sanitaria, contabile e fiscale.</p>
+
+      <h3>Con chi condividiamo i dati</h3>
+      <p>I dati non vengono venduti né ceduti a terzi per finalità di marketing. Possono essere trattati da fornitori che operano come responsabili del trattamento (ad esempio il gestore dello spazio hosting o del servizio di posta elettronica) esclusivamente per conto e secondo le istruzioni dello studio.</p>
+
+      <h3>Servizi di terze parti</h3>
+      <p>Il sito integra una mappa di Google Maps nella sezione "Studio", caricata solo previo tuo consenso esplicito: se la attivi, Google può trattare alcuni dati tecnici (ad esempio l'indirizzo IP) secondo la propria informativa. Puoi gestire questa scelta in qualsiasi momento da "Preferenze cookie" in fondo alla pagina.</p>
+
+      <h3>I tuoi diritti</h3>
+      <p>In qualsiasi momento puoi chiederci di accedere ai tuoi dati, correggerli, cancellarli, limitarne il trattamento, opporti al trattamento o richiederne la portabilità, scrivendo a <a href="mailto:info@sebastianorecalcati.it">info@sebastianorecalcati.it</a>. Hai inoltre diritto di proporre reclamo al Garante per la protezione dei dati personali (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">www.garanteprivacy.it</a>) qualora ritieni che il trattamento violi la normativa vigente.</p>
+
+      <h3>Modifiche a questa informativa</h3>
+      <p>Questa informativa può essere aggiornata nel tempo, ad esempio per adeguamenti normativi o cambi nei servizi utilizzati sul sito. La data di ultimo aggiornamento è indicata in cima al testo.</p>
+    </div>
+  </div>
+
   <script>
   (function(){
     var CONSENT_KEY = 'cookieConsent'; // 'accepted' | 'rejected'
@@ -1843,6 +1934,33 @@
     if(mapLoadBtn) mapLoadBtn.addEventListener('click', function(){
       setMapsConsent(true);
       loadMap();
+    });
+
+    // Popup informativa privacy: si apre al click sui link "informativa sulla privacy" / "Privacy Policy",
+    // si chiude con la X, con Escape o cliccando fuori dal riquadro. Nessun pulsante "accetta": è solo consultabile.
+    var privacyOverlay = document.getElementById('privacyModalOverlay');
+    var privacyClose = document.getElementById('privacyModalClose');
+    var privacyTriggers = document.querySelectorAll('.privacy-modal-trigger');
+
+    function openPrivacyModal(e){
+      if(e) e.preventDefault();
+      if(!privacyOverlay) return;
+      privacyOverlay.classList.add('visible');
+      document.body.classList.add('modal-locked');
+    }
+    function closePrivacyModal(){
+      if(!privacyOverlay) return;
+      privacyOverlay.classList.remove('visible');
+      document.body.classList.remove('modal-locked');
+    }
+
+    privacyTriggers.forEach(function(a){ a.addEventListener('click', openPrivacyModal); });
+    if(privacyClose) privacyClose.addEventListener('click', closePrivacyModal);
+    if(privacyOverlay) privacyOverlay.addEventListener('click', function(e){
+      if(e.target === privacyOverlay) closePrivacyModal();
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') closePrivacyModal();
     });
   })();
   </script>
