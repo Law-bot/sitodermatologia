@@ -9,6 +9,10 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://www.sebastianorecalcati.it/">
 
+<!-- FAVICON: in attesa del logo definitivo. Basterà salvare il PNG del logo come images/favicon.png (idealmente quadrato, es. 512x512px, sfondo pieno o trasparente) — il collegamento è già pronto e funzionerà appena il file sarà presente. -->
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/favicon.png">
+
 <meta property="og:type" content="website">
 <meta property="og:title" content="Studio DERMATOLOGICA — Dott. Sebastiano Recalcati, Dermatologo a Lecco">
 <meta property="og:description" content="Dermatologia clinica, chirurgica ed estetica a Lecco. Équipe specialistica, diagnosi accurate, tecnologie di dermoscopia avanzata.">
@@ -414,11 +418,41 @@
     box-sizing:border-box;
   }
   .hero .hero-grid{width:100%;}
-  .hero-bg-photo{
-    position:absolute;inset:0;z-index:0;
-    width:100%;height:100%;
-    object-fit:cover;
-    object-position:center 30%;
+  .hero-bg-slideshow{position:absolute;inset:0;z-index:0;}
+  .hero-bg-slide{
+    position:absolute;inset:0;
+    background-size:cover;
+    background-position:center 30%;
+    opacity:0;
+    transition:opacity 1.2s var(--ease);
+  }
+  .hero-bg-slide.active{opacity:1;}
+  .hero-bg-slide-placeholder{
+    background:linear-gradient(135deg, rgba(59,93,79,.6), rgba(184,147,90,.4)), var(--dark);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .hero-bg-slide-placeholder span{
+    font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+    color:rgba(255,255,255,.65);
+    border:1px solid rgba(255,255,255,.25);
+    padding:8px 16px;border-radius:999px;
+  }
+  .hero-progress{
+    position:absolute;z-index:2;
+    top:calc(var(--header-h, 91px) + 22px);
+    left:50%;transform:translateX(-50%);
+    display:flex;gap:6px;
+    width:min(320px, 70%);
+  }
+  .hero-progress-bar{
+    flex:1;height:2.5px;border-radius:999px;
+    background:rgba(255,255,255,.28);
+    overflow:hidden;
+  }
+  .hero-progress-fill{
+    display:block;height:100%;width:0%;
+    background:#fff;
+    border-radius:999px;
   }
   .hero-scrim{
     position:absolute;inset:0;z-index:0;
@@ -517,19 +551,33 @@
 
   /* ---------- SPECIALIZZAZIONI ---------- */
   #specializzazioni{padding-top:calc(clamp(58px, 6vw, 72px) - 30px);}
+  .spec-marquee{
+    width:100%;
+    overflow:hidden;
+    -webkit-mask-image:linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+    mask-image:linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+  }
   .spec-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
-    background:var(--glass-border);
-    border:1px solid var(--glass-border);
-    border-radius:22px;overflow:hidden;
+    display:flex;
+    gap:20px;
+    width:max-content;
+    animation:spec-marquee-scroll 48s linear infinite;
+  }
+  .spec-marquee:hover .spec-grid{animation-play-state:paused;}
+  @keyframes spec-marquee-scroll{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
   }
   .spec-card{
+    flex:0 0 auto;
+    width:300px;
     background:var(--paper);
-    padding:38px 32px;
-    transition:background .35s var(--ease);
-    position:relative;
+    border:1px solid var(--glass-border);
+    border-radius:22px;
+    padding:32px 28px;
+    transition:background .35s var(--ease), border-color .35s var(--ease);
   }
-  .spec-card:hover{background:var(--paper-deep);}
+  .spec-card:hover{background:var(--paper-deep);border-color:var(--sage);}
   .spec-icon{
     width:46px;height:46px;border-radius:50%;
     border:1.3px solid var(--sage);
@@ -924,14 +972,14 @@
     .header-actions .btn-primary{padding:9px 16px;font-size:14px;}
     .header-actions .btn-primary svg{width:13px;height:13px;}
     .team-grid, .why-grid{grid-template-columns:1fr 1fr;}
-    .spec-grid{grid-template-columns:1fr 1fr;}
     .studio-wrap, .contact-wrap{grid-template-columns:1fr;}
     .studio-info p:not(.eyebrow), .orari-list{max-width:none;width:100%;}
     .why{padding:56px 28px;}
   }
   @media (max-width:640px){
     .container{padding:0 20px;}
-    .team-grid, .why-grid, .spec-grid{grid-template-columns:1fr;}
+    .team-grid, .why-grid{grid-template-columns:1fr;}
+    .spec-card{width:78vw;}
     .hero{padding:130px 0 60px;}
     section{padding:80px 0;}
     .footer-top{flex-direction:column;}
@@ -940,7 +988,7 @@
     .hero-scrim{
       background:linear-gradient(180deg, rgba(20,32,26,.6) 0%, rgba(20,32,26,.68) 40%, rgba(20,32,26,.8) 100%);
     }
-    .hero-bg-photo{object-position:center 45%;}
+    .hero-bg-slide{background-position:center 45%;}
   }
   @media (max-width:400px){
     .cta-phone{display:none;}
@@ -1265,10 +1313,21 @@
 
   <!-- HERO -->
   <section class="hero">
-    <!-- FOTO SEGNAPOSTO generata con AI: da sostituire con una foto vera (dermoscopia allo studio, o dei medici) appena disponibile. File: images/hero-PLACEHOLDER-ai-da-sostituire.jpg -->
-    <img class="hero-bg-photo" src="images/hero-PLACEHOLDER-ai-da-sostituire.jpg" alt="Dermoscopia digitale durante una visita">
+    <!-- SLIDESHOW HERO: 3 immagini di sfondo, si alternano ogni 6 secondi con dissolvenza.
+         Slide 1: foto segnaposto generata con AI (da sostituire). File: images/hero-PLACEHOLDER-ai-da-sostituire.jpg
+         Slide 2 e 3: segnaposto vuoti, pronti per due foto reali — basta sostituire il div con un <div class="hero-bg-slide" style="background-image:url('images/nome-foto.jpg')"></div> -->
+    <div class="hero-bg-slideshow" id="heroSlideshow">
+      <div class="hero-bg-slide active" style="background-image:url('images/hero-PLACEHOLDER-ai-da-sostituire.jpg')"></div>
+      <div class="hero-bg-slide hero-bg-slide-placeholder"><span>Foto 2 — segnaposto</span></div>
+      <div class="hero-bg-slide hero-bg-slide-placeholder"><span>Foto 3 — segnaposto</span></div>
+    </div>
     <div class="hero-scrim"></div>
     <span class="hero-visual-tag">Segnaposto — da sostituire</span>
+    <div class="hero-progress" id="heroProgress" aria-hidden="true">
+      <span class="hero-progress-bar"><span class="hero-progress-fill"></span></span>
+      <span class="hero-progress-bar"><span class="hero-progress-fill"></span></span>
+      <span class="hero-progress-bar"><span class="hero-progress-fill"></span></span>
+    </div>
     <div class="container hero-grid">
       <div>
         <p class="eyebrow">Studio Medico Dermatologica · Lecco</p>
@@ -1354,51 +1413,53 @@
         <h2>Un percorso clinico per ogni esigenza della pelle.</h2>
         <p>Dalla prevenzione alla chirurgia, fino alla dermatologia estetica: ogni trattamento nasce da una diagnosi accurata.</p>
       </div>
-      <div class="spec-grid">
-        <div class="spec-card reveal">
+      <div class="spec-marquee reveal">
+        <div class="spec-grid" id="specTrack">
+        <div class="spec-card">
           <div class="spec-icon"><svg viewBox="0 0 24 24"><path d="M3 12c2-4 6-6 9-6s7 2 9 6c-2 4-6 6-9 6s-7-2-9-6z"/><circle cx="12" cy="12" r="2.4"/></svg></div>
           <h3>Dermatologia clinica</h3>
           <p>Visite e diagnosi per patologie cutanee comuni e complesse, con impostazione di un percorso terapeutico su misura.</p>
         </div>
-        <div class="spec-card reveal">
+        <div class="spec-card">
           <div class="spec-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
           <h3>Dermoscopia e mappatura nei</h3>
           <p>Analisi digitale dei nevi per l'individuazione precoce di lesioni sospette e la prevenzione del melanoma.</p>
         </div>
-        <div class="spec-card reveal">
+        <div class="spec-card">
           <div class="spec-icon"><svg viewBox="0 0 24 24"><path d="M6 3v18M6 8h11a3 3 0 0 1 0 6H6"/></svg></div>
           <h3>Chirurgia dermatologica</h3>
           <p>Asportazione di neoformazioni cutanee e biopsie, eseguite in ambulatorio con tecniche mininvasive.</p>
         </div>
-        <div class="spec-card reveal">
+        <div class="spec-card">
           <div class="spec-icon"><svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 0 0-5 5c0 3 2 4 2 8a3 3 0 0 0 6 0c0-4 2-5 2-8a5 5 0 0 0-5-5z"/></svg></div>
           <h3>Dermatologia oncologica</h3>
           <p>Diagnosi e monitoraggio delle neoplasie cutanee, in stretto raccordo con i percorsi di follow-up specialistico.</p>
         </div>
-        <div class="spec-card reveal">
+        <div class="spec-card">
           <div class="spec-icon"><svg viewBox="0 0 24 24"><path d="M9 3c-2 3-3 5-3 8a6 6 0 0 0 12 0c0-3-1-5-3-8-1 2-1.5 3-3 3S10 5 9 3z"/></svg></div>
           <h3>Tricologia</h3>
           <p>Valutazione del cuoio capelluto e diagnosi delle problematiche legate alla caduta e alla salute dei capelli.</p>
         </div>
-        <div class="spec-card reveal">
+        <div class="spec-card">
           <div class="spec-icon"><svg viewBox="0 0 24 24"><path d="M9 21c-4-3-6-6-6-10a6 6 0 0 1 12 0h3l-2 3 2 3h-3a6 6 0 0 1-6 4z"/></svg></div>
           <h3>Dermatologia pediatrica</h3>
           <p>Visite dedicate ai più piccoli, per la diagnosi e la gestione delle patologie cutanee dell'infanzia.</p>
         </div>
-        <div class="spec-card reveal">
+        <div class="spec-card">
           <div class="spec-icon"><svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6z"/></svg></div>
           <h3>Venereologia</h3>
           <p>Diagnosi e cura delle malattie a trasmissione sessuale, in un contesto riservato e attento al paziente.</p>
         </div>
-        <div class="spec-card reveal">
+        <div class="spec-card">
           <div class="spec-icon"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4.5"/></svg></div>
           <h3>Micologia</h3>
           <p>Diagnosi e trattamento delle micosi cutanee e ungueali, con esami mirati per una terapia efficace.</p>
         </div>
-        <div class="spec-card reveal">
+        <div class="spec-card">
           <div class="spec-icon"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg></div>
           <h3>Dermatologia estetica</h3>
           <p>Trattamenti di biorivitalizzazione, peeling e laserterapia per la salute e l'aspetto della pelle.</p>
+        </div>
         </div>
       </div>
     </div>
@@ -1664,6 +1725,65 @@
 </footer>
 
 <script>
+  // Slideshow foto hero: cambia immagine ogni 6 secondi con dissolvenza,
+  // barra di avanzamento in stile "stories" per ogni foto.
+  (function(){
+    const slideshow = document.getElementById('heroSlideshow');
+    const progress = document.getElementById('heroProgress');
+    if(!slideshow || !progress) return;
+    const slides = Array.from(slideshow.children);
+    const bars = Array.from(progress.children);
+    if(slides.length < 2){ return; }
+    const INTERVAL = 6000;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let current = 0;
+    let timer = null;
+
+    function setFill(index, mode){
+      const fill = bars[index].querySelector('.hero-progress-fill');
+      if(mode === 'full'){
+        fill.style.transition = 'none';
+        fill.style.width = '100%';
+      } else if(mode === 'empty'){
+        fill.style.transition = 'none';
+        fill.style.width = '0%';
+      } else { // 'animate'
+        fill.style.transition = 'none';
+        fill.style.width = '0%';
+        void fill.offsetWidth; // forza il reflow prima di far ripartire la transizione
+        fill.style.transition = 'width ' + INTERVAL + 'ms linear';
+        fill.style.width = '100%';
+      }
+    }
+
+    function goTo(index){
+      slides[current].classList.remove('active');
+      current = index;
+      slides[current].classList.add('active');
+      bars.forEach((_, i)=>{
+        if(i < current) setFill(i, 'full');
+        else if(i === current) setFill(i, 'animate');
+        else setFill(i, 'empty');
+      });
+    }
+
+    if(reduceMotion){
+      progress.style.display = 'none';
+      return;
+    }
+
+    goTo(0);
+    timer = setInterval(()=>{ goTo((current + 1) % slides.length); }, INTERVAL);
+  })();
+
+  // Marquee specializzazioni: raddoppia le card per lo scorrimento continuo senza scatti
+  (function(){
+    const track = document.getElementById('specTrack');
+    if(!track) return;
+    const original = Array.from(track.children).map(card => card.outerHTML).join('');
+    track.insertAdjacentHTML('beforeend', original);
+  })();
+
   // Studio photo slider
   (function(){
     const track = document.getElementById('studioSliderTrack');
