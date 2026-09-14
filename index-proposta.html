@@ -43,8 +43,7 @@
   "medicalSpecialty": "Dermatology",
   "physician": [
     {"@type": "Physician", "name": "Dott. Sebastiano Recalcati"},
-    {"@type": "Physician", "name": "Dott. Davide Riva"},
-    {"@type": "Physician", "name": "Dott. Lorenzo Rocca"}
+    {"@type": "Physician", "name": "Dott. Davide Riva"}
   ]
 }
 </script>
@@ -179,18 +178,18 @@
   }
 
   :root{
-    --ink:#1B2620;
-    --ink-soft:#425146;
-    --paper:#F3F5EF;
-    --paper-deep:#E8EBE1;
-    --sage:#3B5D4F;
-    --sage-light:#6B8C7C;
-    --brass:#B8935B;
-    --brass-light:#D8B989;
-    --dark:#14201A;
-    --dark-soft:#1F2E26;
+    --ink:#253041;
+    --ink-soft:#445A67;
+    --paper:#F5F2EA;
+    --paper-deep:#EAE5DA;
+    --sage:#445A67;
+    --sage-light:#9BBCD4;
+    --brass:#BFAF9C;
+    --brass-light:#DAD0C3;
+    --dark:#253041;
+    --dark-soft:#2E3D4C;
     --glass:rgba(255,255,255,0.55);
-    --glass-border:rgba(59,93,79,0.16);
+    --glass-border:rgba(68,90,103,0.16);
     --ease:cubic-bezier(.22,1,.36,1);
     --serif:'Gloock', Georgia, serif;
     --sans:'IBM Plex Sans', -apple-system, sans-serif;
@@ -261,7 +260,7 @@
   header{
     position:fixed;top:0;left:0;right:0;
     z-index:300;
-    background:rgba(243,245,239,0.78);
+    background:rgba(245,242,234,0.78);
     backdrop-filter:blur(14px);
     -webkit-backdrop-filter:blur(14px);
     border-bottom:1px solid var(--glass-border);
@@ -312,9 +311,9 @@
   .btn svg{width:15px;height:15px;flex-shrink:0;stroke:currentColor;}
   .btn-primary{
     background:var(--sage);color:var(--paper);
-    box-shadow:0 8px 20px -8px rgba(59,93,79,0.55);
+    box-shadow:0 8px 20px -8px rgba(68,90,103,0.55);
   }
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 26px -8px rgba(59,93,79,.6);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 26px -8px rgba(68,90,103,.6);}
   .btn-primary:active{transform:translateY(0) scale(.97);}
   .btn-ghost{
     border:1.3px solid var(--glass-border);color:var(--ink);
@@ -368,9 +367,9 @@
     transition:opacity .55s var(--ease), transform .55s var(--ease), visibility 0s linear 0s;
   }
   .mobile-menu .orb-a{width:420px;height:420px;top:-100px;right:-100px;
-    background:radial-gradient(circle, rgba(59,93,79,0.30), transparent 70%);}
+    background:radial-gradient(circle, rgba(68,90,103,0.30), transparent 70%);}
   .mobile-menu .orb-b{width:340px;height:340px;bottom:-100px;left:-90px;
-    background:radial-gradient(circle, rgba(184,147,90,0.26), transparent 70%);}
+    background:radial-gradient(circle, rgba(191,175,156,0.26), transparent 70%);}
   .mobile-menu-links{
     position:relative;z-index:1;
     display:flex;flex-direction:column;align-items:center;gap:4px;
@@ -428,7 +427,7 @@
   }
   .hero-bg-slide.active{opacity:1;}
   .hero-bg-slide-placeholder{
-    background:linear-gradient(135deg, rgba(59,93,79,.6), rgba(184,147,90,.4)), var(--dark);
+    background:linear-gradient(135deg, rgba(68,90,103,.6), rgba(191,175,156,.4)), var(--dark);
     display:flex;align-items:center;justify-content:center;
   }
   .hero-bg-slide-placeholder span{
@@ -456,14 +455,14 @@
   }
   .hero-scrim{
     position:absolute;inset:0;z-index:0;
-    background:radial-gradient(ellipse 65% 60% at 50% 42%, rgba(20,32,26,.78) 0%, rgba(20,32,26,.58) 45%, rgba(20,32,26,.32) 75%, rgba(20,32,26,.2) 100%),
-      linear-gradient(0deg, rgba(20,32,26,.55) 0%, rgba(20,32,26,0) 32%);
+    background:radial-gradient(ellipse 65% 60% at 50% 42%, rgba(37,48,65,.78) 0%, rgba(37,48,65,.58) 45%, rgba(37,48,65,.32) 75%, rgba(37,48,65,.2) 100%),
+      linear-gradient(0deg, rgba(37,48,65,.55) 0%, rgba(37,48,65,0) 32%);
   }
   .hero-visual-tag{
     position:absolute;right:20px;bottom:20px;z-index:1;
     font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
     color:rgba(255,255,255,.85);
-    background:rgba(20,32,26,.45);
+    background:rgba(37,48,65,.45);
     padding:5px 10px;border-radius:999px;
     backdrop-filter:blur(4px);
   }
@@ -488,7 +487,7 @@
   }
   .hero p.lead{
     font-family:var(--google-sans);
-    font-size:14.5px;line-height:1.75;letter-spacing:0.01em;color:rgba(243,245,239,.92);
+    font-size:14.5px;line-height:1.75;letter-spacing:0.01em;color:rgba(245,242,234,.92);
     max-width:560px;margin:0 auto 36px;
     text-shadow:0 1px 14px rgba(0,0,0,.5);
   }
@@ -497,7 +496,7 @@
   .hero .btn-ghost:hover{border-color:var(--sage-light);}
   .hero-meta{
     display:flex;gap:32px;flex-wrap:wrap;
-    font-family:var(--mono);font-size:13px;color:rgba(243,245,239,.92);
+    font-family:var(--mono);font-size:13px;color:rgba(245,242,234,.92);
     justify-content:center;
     text-shadow:0 1px 12px rgba(0,0,0,.5);
   }
@@ -505,7 +504,7 @@
   .hero-meta svg{width:15px;height:15px;stroke:var(--sage-light);flex-shrink:0;}
 
   /* ---------- SECTION GENERIC ---------- */
-  section{padding:120px 0;position:relative;}
+  section{padding:90px 0;position:relative;}
   .section-head{max-width:640px;margin-bottom:64px;}
   .section-head h2{font-size:clamp(27px,3.2vw,41px);line-height:1.12;}
   .section-head p:not(.eyebrow){font-family:var(--google-sans);color:var(--ink-soft);font-size:14px;line-height:1.7;letter-spacing:0.01em;margin-top:16px;max-width:560px;}
@@ -520,6 +519,45 @@
   .team-grid{
     display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
   }
+  .team-grid:has(> .team-card:nth-child(2):last-child){
+    grid-template-columns:repeat(2,1fr);gap:28px;
+  }
+  .team-grid:has(> .team-card:nth-child(2):last-child) .team-card{
+    display:flex;gap:26px;align-items:stretch;text-align:left;
+  }
+  .team-grid:has(> .team-card:nth-child(2):last-child) .avatar-ring{
+    width:auto;height:auto;flex:0 0 40%;border-radius:20px;margin-bottom:0;
+    border-color:var(--glass-border);
+  }
+  .team-grid:has(> .team-card:nth-child(2):last-child) .avatar-ring::before{
+    content:none;
+  }
+  .team-grid:has(> .team-card:nth-child(2):last-child) .team-card-info{
+    display:flex;flex-direction:column;flex:1;min-width:0;
+  }
+  .team-grid:has(> .team-card:nth-child(2):last-child) .team-card-info h3{
+    margin-bottom:8px;
+  }
+  .team-grid:has(> .team-card:nth-child(2):last-child) .team-card-info .role{
+    margin-bottom:16px;
+  }
+  .team-grid:has(> .team-card:nth-child(2):last-child) .team-card-info p{
+    margin-bottom:0;
+  }
+  .team-grid:has(> .team-card:nth-child(2):last-child) .team-card-btn{
+    margin-top:20px;align-self:flex-start;
+  }
+  @media (max-width:640px){
+    .team-grid:has(> .team-card:nth-child(2):last-child){
+      grid-template-columns:1fr;
+    }
+    .team-grid:has(> .team-card:nth-child(2):last-child) .team-card{
+      flex-direction:column;
+    }
+    .team-grid:has(> .team-card:nth-child(2):last-child) .avatar-ring{
+      width:100%;flex:none;aspect-ratio:4/3;margin-bottom:18px;
+    }
+  }
   .team-card{
     background:var(--glass);
     border:1px solid var(--glass-border);
@@ -529,7 +567,7 @@
     -webkit-backdrop-filter:blur(10px);
     transition:transform .4s var(--ease), box-shadow .4s var(--ease);
   }
-  .team-card:hover{transform:translateY(-6px);box-shadow:0 24px 50px -24px rgba(27,38,32,.35);}
+  .team-card:hover{transform:translateY(-6px);box-shadow:0 24px 50px -24px rgba(37,48,65,.35);}
   .avatar-ring{
     width:120px;height:120px;border-radius:50%;
     border:1.4px solid var(--sage);
@@ -556,111 +594,14 @@
   .team-card p{font-family:var(--google-sans);font-size:14px;line-height:1.7;letter-spacing:0.01em;color:var(--ink-soft);}
   .team-card-btn{margin-top:22px; padding:7px 16px;font-size:12.5px;}
 
-  /* ---------- TEAM: VARIANTE 2 (scheda con slider) ---------- */
-  .doctor-slider-wrap{position:relative;}
-  .doctor-slider{
-    display:flex;
-    gap:24px;
-    overflow-x:auto;
-    scroll-snap-type:x mandatory;
-    scroll-behavior:smooth;
-    padding-bottom:10px;
-    -webkit-overflow-scrolling:touch;
-    scrollbar-width:none;
-  }
-  .doctor-slider::-webkit-scrollbar{display:none;}
-  .doctor-slide{
-    flex:0 0 auto;
-    width:min(720px, 86%);
-    scroll-snap-align:start;
-    display:grid;
-    grid-template-columns:220px 1fr;
-    gap:32px;
-    align-items:stretch;
-    background:var(--paper);
-    border:1px solid var(--glass-border);
-    border-radius:22px;
-    padding:32px;
-  }
-  .doctor-slide-photo{
-    width:100%;aspect-ratio:3/4;border-radius:16px;overflow:hidden;flex-shrink:0;
-    align-self:start;
-  }
-  .doctor-slide-photo img{width:100%;height:100%;object-fit:cover;}
-  .doctor-slide-info{
-    display:flex;flex-direction:column;align-items:flex-start;
-  }
-  .doctor-slide-info h3{font-size:22px;margin-bottom:4px;}
-  .doctor-slide-info .role{
-    font-family:var(--mono);font-size:12px;color:var(--brass);
-    text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px;display:block;
-  }
-  .doctor-slide-info ul{
-    display:flex;flex-direction:column;gap:10px;
-    margin:0 0 22px;padding-left:0;list-style:none;width:100%;
-  }
-  .doctor-slide-info li{
-    font-family:var(--google-sans);font-size:13.5px;line-height:1.55;color:var(--ink-soft);
-    text-align:left;
-  }
-  .doctor-slide-info .btn{
-    margin-top:auto;
-  }
-  @media (max-width:720px){
-    .doctor-slide{grid-template-columns:1fr;width:88%;padding:24px;}
-    .doctor-slide-photo{max-width:220px;margin:0 auto;}
-    .doctor-slide-info{align-items:center;text-align:center;}
-    .doctor-slide-info ul{align-items:center;}
-    .doctor-slide-info li{text-align:center;}
-    .doctor-slide-info .btn{margin:22px auto 0;}
-  }
-
-  /* ---------- SPECIALIZZAZIONI ---------- */
-  #specializzazioni{padding-top:calc(clamp(58px, 6vw, 72px) - 30px);}
-  .spec-marquee{
-    width:100%;
-    overflow:hidden;
-    -webkit-mask-image:linear-gradient(to right, transparent, black 4%, black 96%, transparent);
-    mask-image:linear-gradient(to right, transparent, black 4%, black 96%, transparent);
-  }
-  .spec-grid{
-    display:flex;
-    gap:20px;
-    width:max-content;
-    animation:spec-marquee-scroll 48s linear infinite;
-  }
-  .spec-marquee:hover .spec-grid{animation-play-state:paused;}
-  @keyframes spec-marquee-scroll{
-    from{transform:translateX(0);}
-    to{transform:translateX(-50%);}
-  }
-  .spec-card{
-    flex:0 0 auto;
-    width:300px;
-    background:var(--paper);
-    border:1px solid var(--glass-border);
-    border-radius:22px;
-    padding:32px 28px;
-    transition:background .35s var(--ease), border-color .35s var(--ease);
-  }
-  .spec-card:hover{background:var(--paper-deep);border-color:var(--sage);}
-  .spec-icon{
-    width:52px;height:52px;border-radius:50%;
-    border:1.3px solid var(--sage);
-    background:rgba(107,140,124,0.08);
-    display:flex;align-items:center;justify-content:center;
-    margin-bottom:20px;
-  }
-  .spec-icon svg{width:24px;height:24px;stroke:var(--sage);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
-  .spec-card h3{font-size:18px;margin-bottom:10px;}
-  .spec-card p{font-family:var(--google-sans);font-size:14px;color:var(--ink-soft);}
+  /* ---------- PRESTAZIONI ---------- */
 
   /* ---------- SPECIALIZZAZIONI: VARIANTE 2 (schede con immagine) ---------- */
   .spec-slider-wrap{position:relative;}
   .spec-slider{
     display:flex;gap:24px;overflow-x:auto;
     scroll-snap-type:x mandatory;scroll-behavior:smooth;
-    padding-bottom:10px;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+    padding:16px 4px 50px;-webkit-overflow-scrolling:touch;scrollbar-width:none;
   }
   .spec-slider::-webkit-scrollbar{display:none;}
   .spec-photo-card{
@@ -669,7 +610,7 @@
     border-radius:22px;overflow:hidden;
     transition:border-color .35s var(--ease), box-shadow .35s var(--ease);
   }
-  .spec-photo-card:hover{border-color:var(--sage);box-shadow:0 24px 50px -30px rgba(27,38,32,.35);}
+  .spec-photo-card:hover{border-color:var(--sage);box-shadow:0 24px 50px -30px rgba(37,48,65,.35);}
   .spec-photo-card-img{width:100%;aspect-ratio:4/3;overflow:hidden;}
   .spec-photo-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease);}
   .spec-photo-card:hover .spec-photo-card-img img{transform:scale(1.06);}
@@ -690,12 +631,12 @@
     overflow:hidden;
   }
   .why .orb-a{width:400px;height:400px;top:-100px;left:8%;
-    background:radial-gradient(circle, rgba(107,140,124,0.45), transparent 70%);}
+    background:radial-gradient(circle, rgba(155,188,212,0.45), transparent 70%);}
   .why .orb-b{width:320px;height:320px;bottom:-90px;right:6%;
-    background:radial-gradient(circle, rgba(184,147,90,0.38), transparent 70%);}
+    background:radial-gradient(circle, rgba(191,175,156,0.38), transparent 70%);}
   .why .section-head, .why .why-grid{position:relative;z-index:1;}
   .why .section-head h2{color:var(--paper);}
-  .why .section-head p:not(.eyebrow){color:rgba(243,245,239,0.65);}
+  .why .section-head p:not(.eyebrow){color:rgba(245,242,234,0.65);}
   .why-grid{
     display:grid;grid-template-columns:repeat(4,1fr);gap:36px;
   }
@@ -704,10 +645,9 @@
     margin-bottom:16px;display:block;
   }
   .why-item h3{color:var(--paper);font-size:18px;margin-bottom:10px;}
-  .why-item p{font-family:var(--google-sans);color:rgba(243,245,239,0.6);font-size:14px;}
+  .why-item p{font-family:var(--google-sans);color:rgba(245,242,234,0.6);font-size:14px;}
 
   /* ---------- STUDIO / SEDE ---------- */
-    #studio{padding-top:calc(clamp(58px, 6vw, 72px) - 30px);}
 
   .studio-slider{
     position:relative;
@@ -750,7 +690,7 @@
     font-size:12px;
     letter-spacing:.06em;
     color:var(--ink);
-    background:linear-gradient(to top, rgba(243,245,239,.92), rgba(243,245,239,0));
+    background:linear-gradient(to top, rgba(245,242,234,.92), rgba(245,242,234,0));
     padding:32px 18px 14px;
   }
   .slider-nav{
@@ -758,7 +698,7 @@
     width:44px;height:44px;border-radius:50%;
     background:var(--paper);border:1px solid var(--glass-border);
     display:flex;align-items:center;justify-content:center;
-    box-shadow:0 8px 20px -8px rgba(27,38,32,.25);
+    box-shadow:0 8px 20px -8px rgba(37,48,65,.25);
     transition:transform .25s var(--ease), border-color .25s var(--ease);
     z-index:2;
   }
@@ -816,7 +756,7 @@
     position:fixed;left:0;right:0;bottom:0;z-index:100000;
     background:var(--dark);color:rgba(255,255,255,.92);
     padding:24px 32px;
-    box-shadow:0 -12px 30px rgba(20,32,26,.25);
+    box-shadow:0 -12px 30px rgba(37,48,65,.25);
     transform:translateY(100%);
     transition:transform .5s var(--ease);
   }
@@ -845,7 +785,7 @@
   /* ---------- PRIVACY MODAL ---------- */
   .privacy-modal-overlay{
     position:fixed;inset:0;z-index:100010;
-    background:rgba(20,32,26,.75);
+    background:rgba(37,48,65,.75);
     backdrop-filter:blur(4px);
     -webkit-backdrop-filter:blur(4px);
     display:flex;align-items:center;justify-content:center;
@@ -900,15 +840,15 @@
     overflow:hidden;
   }
   .faq-panel .orb-a{width:400px;height:400px;top:-100px;left:8%;
-    background:radial-gradient(circle, rgba(107,140,124,0.45), transparent 70%);}
+    background:radial-gradient(circle, rgba(155,188,212,0.45), transparent 70%);}
   .faq-panel .orb-b{width:320px;height:320px;bottom:-90px;right:6%;
-    background:radial-gradient(circle, rgba(184,147,90,0.38), transparent 70%);}
+    background:radial-gradient(circle, rgba(191,175,156,0.38), transparent 70%);}
   .faq-panel .section-head, .faq-panel .faq-list{position:relative;z-index:1;}
   .faq-panel .section-head h2{color:var(--paper);}
-  .faq-panel .section-head p:not(.eyebrow){color:rgba(243,245,239,0.65);}
+  .faq-panel .section-head p:not(.eyebrow){color:rgba(245,242,234,0.65);}
   .faq-list{max-width:760px;}
   .faq-item{
-    border-bottom:1px solid rgba(243,245,239,0.16);
+    border-bottom:1px solid rgba(245,242,234,0.16);
   }
   .faq-q{
     width:100%;display:flex;justify-content:space-between;align-items:center;
@@ -932,15 +872,15 @@
     max-height:0;overflow:hidden;
     transition:max-height .5s var(--ease), padding .5s var(--ease);
   }
-  .faq-a p{font-family:var(--google-sans);padding-bottom:24px;color:rgba(243,245,239,0.6);font-size:15px;max-width:640px;}
+  .faq-a p{font-family:var(--google-sans);padding-bottom:24px;color:rgba(245,242,234,0.6);font-size:15px;max-width:640px;}
   .faq-item.open .faq-a{max-height:220px;}
 
   /* ---------- CONTATTI ---------- */
   #contatti{position:relative;overflow:hidden;}
   #contatti .orb-a{width:420px;height:420px;top:-80px;right:-120px;
-    background:radial-gradient(circle, rgba(59,93,79,0.18), transparent 70%);}
+    background:radial-gradient(circle, rgba(68,90,103,0.18), transparent 70%);}
   #contatti .orb-b{width:300px;height:300px;bottom:-60px;left:-60px;
-    background:radial-gradient(circle, rgba(184,147,90,0.16), transparent 70%);}
+    background:radial-gradient(circle, rgba(191,175,156,0.16), transparent 70%);}
   .contact-wrap{
     position:relative;z-index:1;
     display:grid;grid-template-columns:1fr 1fr;gap:56px;
@@ -965,7 +905,7 @@
     -webkit-backdrop-filter:blur(10px);
     transition:transform .4s var(--ease), box-shadow .4s var(--ease);
   }
-  .contact-blocks .contact-block:hover{transform:translateY(-4px);box-shadow:0 20px 40px -22px rgba(27,38,32,.3);}
+  .contact-blocks .contact-block:hover{transform:translateY(-4px);box-shadow:0 20px 40px -22px rgba(37,48,65,.3);}
   .contact-blocks .contact-block:last-child{border-bottom:1px solid var(--glass-border);}
   .contact-blocks .contact-block .label{display:block;margin-bottom:6px;}
   .contact-blocks .contact-block .value{display:block;margin-left:0;font-size:17px;}
@@ -1030,12 +970,12 @@
 
   /* ---------- FOOTER ---------- */
   footer{
-    background:var(--dark);color:rgba(243,245,239,.7);
+    background:var(--dark);color:rgba(245,242,234,.7);
     padding:70px 0 30px;
   }
   .footer-top{
     display:flex;justify-content:space-between;flex-wrap:wrap;gap:40px;
-    padding-bottom:44px;border-bottom:1px solid rgba(243,245,239,.12);
+    padding-bottom:44px;border-bottom:1px solid rgba(245,242,234,.12);
     margin-bottom:28px;
   }
   .footer-brand h3{color:var(--paper);font-size:23px;margin-bottom:10px;}
@@ -1049,11 +989,11 @@
   .footer-col h4::before{
     content:'';width:16px;height:16px;border:1.4px solid currentColor;border-radius:50%;flex-shrink:0;
   }
-  .footer-col a, .footer-col span{font-family:var(--google-sans);display:block;font-size:14px;margin-bottom:10px;color:rgba(243,245,239,.65);}
+  .footer-col a, .footer-col span{font-family:var(--google-sans);display:block;font-size:14px;margin-bottom:10px;color:rgba(245,242,234,.65);}
   .footer-col a:hover{color:var(--paper);}
   .footer-bottom{
     display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
-    font-family:var(--google-sans);font-size:12px;color:rgba(243,245,239,.4);
+    font-family:var(--google-sans);font-size:12px;color:rgba(245,242,234,.4);
   }
 
   /* ---------- RESPONSIVE ---------- */
@@ -1069,7 +1009,7 @@
     .why{padding:56px 28px;}
     .team-grid{
       display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;
-      -webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px;
+      -webkit-overflow-scrolling:touch;scrollbar-width:none;padding:16px 4px 50px;
     }
     .team-grid::-webkit-scrollbar{display:none;}
     .team-card{flex:0 0 auto;width:64%;scroll-snap-align:start;}
@@ -1080,14 +1020,13 @@
     .why-grid{grid-template-columns:1fr;}
     .team-card{width:80%;}
     .team-slider-wrap .slider-nav{display:none;}
-    .spec-card{width:78vw;}
     .hero{padding:130px 0 60px;}
     section{padding:80px 0;}
     .footer-top{flex-direction:column;}
     .footer-cols{gap:36px;flex-wrap:wrap;}
     .hero-ctas{flex-direction:column;align-items:stretch;}
     .hero-scrim{
-      background:linear-gradient(180deg, rgba(20,32,26,.6) 0%, rgba(20,32,26,.68) 40%, rgba(20,32,26,.8) 100%);
+      background:linear-gradient(180deg, rgba(37,48,65,.6) 0%, rgba(37,48,65,.68) 40%, rgba(37,48,65,.8) 100%);
     }
     .hero-bg-slide{background-position:center 45%;}
   }
@@ -1102,6 +1041,7 @@
 
   /* ---------- TRUST STRIP ---------- */
   .trust-strip{
+    padding:36px 0;
     border-top:1px solid var(--glass-border);
     border-bottom:1px solid var(--glass-border);
     background:rgba(255,255,255,.22);
@@ -1149,7 +1089,7 @@
     padding:38px 44px;
     border:1px solid var(--glass-border);
     border-radius:24px;
-    background:linear-gradient(135deg, rgba(59,93,79,.07), rgba(184,147,90,.07));
+    background:linear-gradient(135deg, rgba(68,90,103,.07), rgba(191,175,156,.07));
   }
   .final-cta-wrap h2{font-size:clamp(22px,2.3vw,27px);line-height:1.2;margin:0 0 10px;}
   .final-cta-wrap p:not(.eyebrow){font-family:var(--google-sans);font-size:14px;line-height:1.7;letter-spacing:0.01em;color:var(--ink-soft);max-width:620px;margin:0;}
@@ -1192,6 +1132,9 @@
   /* ---------- TIGHTER SECTION RHYTHM ---------- */
   section{
     padding-top:clamp(58px, 6vw, 72px);
+    padding-bottom:0;
+  }
+  section:last-of-type{
     padding-bottom:clamp(58px, 6vw, 72px);
   }
   .hero{
@@ -1318,8 +1261,8 @@
   /* ---------- UNIFIED SFUMATURA (stessa della sezione "Perché noi") ---------- */
   :root{
     --brand-gradient:
-      radial-gradient(circle at 18% 20%, rgba(107,140,124,0.55), transparent 60%),
-      radial-gradient(circle at 85% 85%, rgba(184,147,90,0.48), transparent 60%),
+      radial-gradient(circle at 18% 20%, rgba(155,188,212,0.55), transparent 60%),
+      radial-gradient(circle at 85% 85%, rgba(191,175,156,0.48), transparent 60%),
       var(--dark);
   }
 
@@ -1328,7 +1271,7 @@
     background:var(--brand-gradient) !important;
     color:#fff !important;
     border:1px solid rgba(255,255,255,.12) !important;
-    box-shadow:0 8px 22px rgba(20,32,26,.28) !important;
+    box-shadow:0 8px 22px rgba(37,48,65,.28) !important;
   }
   .btn-primary:hover{
     filter:brightness(1.1);
@@ -1343,9 +1286,9 @@
     color:rgba(255,255,255,.94);
   }
   footer .orb-a{width:400px;height:400px;top:-100px;left:8%;
-    background:radial-gradient(circle, rgba(107,140,124,0.45), transparent 70%);}
+    background:radial-gradient(circle, rgba(155,188,212,0.45), transparent 70%);}
   footer .orb-b{width:320px;height:320px;bottom:-90px;right:6%;
-    background:radial-gradient(circle, rgba(184,147,90,0.38), transparent 70%);}
+    background:radial-gradient(circle, rgba(191,175,156,0.38), transparent 70%);}
   footer .container{position:relative;z-index:1;}
   footer a,
   footer h3,
@@ -1375,7 +1318,9 @@
     <a href="#" class="logo">DERMATOLOGICA<!--<span>STUDIO MEDICO SPECIALISTICO · LECCO</span>--></a>
     <nav class="links">
       <a href="#team">Chi siamo</a>
-      <a href="#specializzazioni">Specializzazioni</a>
+      <a href="#prestazioni">Prestazioni</a>
+      <a href="#perche">Perché noi</a>
+      <a href="#studio">Studio</a>
     </nav>
     <div class="header-actions">
       <a href="tel:+393926917777" class="btn btn-primary">
@@ -1394,7 +1339,9 @@
   <div class="bg-orbs"><div class="orb orb-a"></div><div class="orb orb-b"></div></div>
   <nav class="mobile-menu-links">
     <a href="#team">Chi siamo</a>
-    <a href="#specializzazioni">Specializzazioni</a>
+    <a href="#prestazioni">Prestazioni</a>
+    <a href="#perche">Perché noi</a>
+    <a href="#studio">Studio</a>
   </nav>
   <a href="tel:+393926917777" class="mobile-menu-phone">
     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -1428,7 +1375,7 @@
         <p class="lead">Un'équipe di dermatologi specialisti a Lecco per la diagnosi, la cura e la prevenzione delle patologie della pelle — dalla dermoscopia alla chirurgia dermatologica, dalla tricologia alla dermatologia estetica.</p>
         <div class="hero-ctas">
           <a href="tel:+393926917777" class="btn btn-primary">Prenota una visita</a>
-          <a href="#specializzazioni" class="btn btn-ghost">Scopri le specializzazioni</a>
+          <a href="#prestazioni" class="btn btn-ghost">Scopri le prestazioni</a>
         </div>
         <div class="hero-meta">
           <div>
@@ -1440,6 +1387,22 @@
             392 691 7777
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+  <section class="trust-strip" aria-label="Punti di forza dello studio">
+    <div class="container trust-grid">
+      <div class="trust-item">
+        <span class="trust-kicker">01</span>
+        <div><strong>Approccio specialistico</strong><span>Valutazione dermatologica personalizzata</span></div>
+      </div>
+      <div class="trust-item">
+        <span class="trust-kicker">02</span>
+        <div><strong>Diagnosi e prevenzione</strong><span>Controllo dei nevi e patologie cutanee</span></div>
+      </div>
+      <div class="trust-item">
+        <span class="trust-kicker">03</span>
+        <div><strong>Studio a Lecco</strong><span>Visite su appuntamento</span></div>
       </div>
     </div>
   </section>
@@ -1456,29 +1419,32 @@
         <div class="team-card reveal">
           <!-- Foto segnaposto (stock, licenza libera) in attesa della foto vera del dottore -->
           <div class="avatar-ring"><img src="images/team-placeholder-01.jpg" alt="Dott. Sebastiano Recalcati" loading="lazy"></div>
-          <h3>Dott. Sebastiano Recalcati</h3>
-          <span class="role">Medico Chirurgo · Dermatologia e Venereologia</span>
-          <p>Guida l'équipe dello studio, con attività clinica dedicata alla diagnosi dermatologica, alla dermoscopia e al follow-up oncologico cutaneo.</p>
-          <a href="documenti/cv-sebastiano-recalcati.pdf" target="_blank" rel="noopener" class="btn btn-primary team-card-btn">Scarica CV</a>
+          <div class="team-card-info">
+            <h3>Dott. Sebastiano Recalcati</h3>
+            <span class="role">Medico Chirurgo · Dermatologia e Venereologia</span>
+            <p>Guida l'équipe dello studio, con attività clinica dedicata alla diagnosi dermatologica, alla dermoscopia e al follow-up oncologico cutaneo.</p>
+            <a href="documenti/cv-sebastiano-recalcati.pdf" target="_blank" rel="noopener" class="btn btn-primary team-card-btn">Scarica CV</a>
+          </div>
         </div>
         <div class="team-card reveal">
-          <!-- Foto segnaposto (stock, licenza libera) in attesa della foto vera del dottore -->
-          <div class="avatar-ring"><img src="images/team-placeholder-02.jpg" alt="Dott. Davide Riva" loading="lazy"></div>
-          <h3>Dott. Davide Riva</h3>
-          <span class="role">Specialista in Dermatologia e Venereologia</span>
-          <p>Si occupa di dermatologia clinica generale e di percorsi diagnostici personalizzati per patologie cutanee di diversa natura.</p>
-          <!-- TODO: collegare il CV di Davide Riva appena disponibile -->
-          <a href="#" class="btn btn-primary team-card-btn">Scarica CV</a>
+          <div class="avatar-ring"><img src="images/team-davide-riva.jpg" alt="Dott. Davide Riva" loading="lazy"></div>
+          <div class="team-card-info">
+            <h3>Dott. Davide Riva</h3>
+            <span class="role">Specialista in Dermatologia e Venereologia</span>
+            <p>Si occupa di dermatologia clinica generale e di percorsi diagnostici personalizzati per patologie cutanee di diversa natura.</p>
+            <!-- TODO: collegare il CV di Davide Riva appena disponibile -->
+            <a href="#" class="btn btn-primary team-card-btn">Scarica CV</a>
+          </div>
         </div>
+        <!-- Dott. Lorenzo Rocca: non più nello studio, scheda nascosta (non eliminata) per un eventuale ripristino futuro.
         <div class="team-card reveal">
-          <!-- Foto segnaposto (stock, licenza libera) in attesa della foto vera del dottore -->
           <div class="avatar-ring"><img src="images/team-placeholder-03.jpg" alt="Dott. Lorenzo Rocca" loading="lazy"></div>
           <h3>Dott. Lorenzo Rocca</h3>
           <span class="role">Specialista in Dermatologia e Venereologia</span>
           <p>Affianca l'équipe nell'attività ambulatoriale, con particolare attenzione ai percorsi di prevenzione e controllo periodico.</p>
-          <!-- TODO: collegare il CV di Lorenzo Rocca appena disponibile -->
           <a href="#" class="btn btn-primary team-card-btn">Scarica CV</a>
         </div>
+        -->
       </div>
       <button type="button" class="slider-nav prev" aria-label="Medico precedente">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M15 18l-6-6 6-6"/></svg>
@@ -1488,147 +1454,24 @@
       </button>
       <div class="slider-dots" id="teamSliderDots"></div>
       </div>
-
-      <!-- VARIANTE 2 — scheda medico con slider (foto sx, testo dx, peek del successivo) -->
-      <div class="section-head reveal" style="margin-top:90px;">
-        <p class="eyebrow">Alternativa</p>
-        <h2>Variante 2 — scheda con slider</h2>
-        <p>Stessa équipe, presentata come scheda dettagliata: scorri per vedere il medico successivo.</p>
-      </div>
-      <div class="doctor-slider-wrap reveal">
-        <div class="doctor-slider" id="doctorSlider">
-          <div class="doctor-slide">
-            <div class="doctor-slide-photo"><img src="images/team-placeholder-01.jpg" alt="Dott. Sebastiano Recalcati" loading="lazy"></div>
-            <div class="doctor-slide-info">
-              <h3>Dott. Sebastiano Recalcati</h3>
-              <span class="role">Medico Chirurgo · Specialista in Dermatologia e Venereologia</span>
-              <ul>
-                <li>Master Universitario di II livello in Dermochirurgia, Università di Siena</li>
-                <li>Direttore SSD Dermatologia, ASST Lariana – Ospedale Sant'Anna, Como</li>
-                <li>Autore di oltre 40 pubblicazioni su riviste scientifiche internazionali</li>
-                <li>Fondatore e Direttore Sanitario di Studio DERMATOLOGICA</li>
-              </ul>
-              <a href="documenti/cv-sebastiano-recalcati.pdf" target="_blank" rel="noopener" class="btn btn-ghost">Scarica CV completo</a>
-            </div>
-          </div>
-          <!-- TODO: dati reali di Davide Riva (CV non ancora disponibile) — elenco puntato segnaposto -->
-          <div class="doctor-slide">
-            <div class="doctor-slide-photo"><img src="images/team-placeholder-02.jpg" alt="Dott. Davide Riva" loading="lazy"></div>
-            <div class="doctor-slide-info">
-              <h3>Dott. Davide Riva</h3>
-              <span class="role">Specialista in Dermatologia e Venereologia</span>
-              <ul>
-                <li>Specializzazione in Dermatologia e Venereologia — segnaposto</li>
-                <li>Esperienza clinica in dermatologia generale — segnaposto</li>
-                <li>Percorsi diagnostici personalizzati — segnaposto</li>
-              </ul>
-              <a href="#" class="btn btn-ghost">Scarica CV completo</a>
-            </div>
-          </div>
-          <!-- TODO: dati reali di Lorenzo Rocca (CV non ancora disponibile) — elenco puntato segnaposto -->
-          <div class="doctor-slide">
-            <div class="doctor-slide-photo"><img src="images/team-placeholder-03.jpg" alt="Dott. Lorenzo Rocca" loading="lazy"></div>
-            <div class="doctor-slide-info">
-              <h3>Dott. Lorenzo Rocca</h3>
-              <span class="role">Specialista in Dermatologia e Venereologia</span>
-              <ul>
-                <li>Specializzazione in Dermatologia e Venereologia — segnaposto</li>
-                <li>Attività ambulatoriale e controlli periodici — segnaposto</li>
-                <li>Percorsi di prevenzione — segnaposto</li>
-              </ul>
-              <a href="#" class="btn btn-ghost">Scarica CV completo</a>
-            </div>
-          </div>
-        </div>
-        <button type="button" class="slider-nav prev" aria-label="Medico precedente">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <button type="button" class="slider-nav next" aria-label="Medico successivo">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-        <div class="slider-dots" id="doctorSliderDots"></div>
-      </div>
     </div>
   </section>
 
-  <!-- SPECIALIZZAZIONI -->
-  <section id="specializzazioni">
+  <!-- PRESTAZIONI -->
+  <section id="prestazioni">
     <div class="container">
       <div class="section-head reveal">
-        <p class="eyebrow">Specializzazioni</p>
+        <p class="eyebrow">Prestazioni</p>
         <h2>Un percorso clinico per ogni esigenza della pelle.</h2>
         <p>Dalla prevenzione alla chirurgia, fino alla dermatologia estetica: ogni trattamento nasce da una diagnosi accurata.</p>
-      </div>
-      <div class="spec-marquee reveal">
-        <div class="spec-grid" id="specTrack">
-        <div class="spec-card">
-          <div class="spec-icon"><svg viewBox="0 0 24 24"><path d="M3 12h3l1.6-4 3 8 2-6 1.4 2h6.6"/></svg></div>
-          <h3>Dermatologia clinica</h3>
-          <p>Visite e diagnosi per patologie cutanee comuni e complesse, con impostazione di un percorso terapeutico su misura.</p>
-        </div>
-        <div class="spec-card">
-          <div class="spec-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><circle cx="11" cy="11" r="1.5" fill="currentColor" stroke="none" style="color:var(--sage);"/><path d="M21 21l-4.3-4.3"/></svg></div>
-          <h3>Dermoscopia e mappatura nei</h3>
-          <p>Analisi digitale dei nevi per l'individuazione precoce di lesioni sospette e la prevenzione del melanoma.</p>
-        </div>
-        <div class="spec-card">
-          <div class="spec-icon"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.6"/><circle cx="6" cy="18" r="2.6"/><path d="M19 4L8 15"/><path d="M13.5 13.5L19 20"/><path d="M8 9l2.5 2.5"/></svg></div>
-          <h3>Chirurgia dermatologica</h3>
-          <p>Asportazione di neoformazioni cutanee e biopsie, eseguite in ambulatorio con tecniche mininvasive.</p>
-        </div>
-        <div class="spec-card">
-          <div class="spec-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.2"/><path d="M12 7.5v4.7l3.2 2"/></svg></div>
-          <h3>Dermatologia oncologica</h3>
-          <p>Diagnosi e monitoraggio delle neoplasie cutanee, in stretto raccordo con i percorsi di follow-up specialistico.</p>
-        </div>
-        <div class="spec-card">
-          <div class="spec-icon"><svg viewBox="0 0 24 24"><path d="M7 2.5c-2 4.5 2.2 5.5 0 10"/><path d="M12 2.5c-2 5 2.2 6.5 0 12"/><path d="M17 2.5c-2 4.5 2.2 5.5 0 10"/></svg></div>
-          <h3>Tricologia</h3>
-          <p>Valutazione del cuoio capelluto e diagnosi delle problematiche legate alla caduta e alla salute dei capelli.</p>
-        </div>
-        <div class="spec-card">
-          <div class="spec-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M4.8 20c0-3.8 3.2-6.6 7.2-6.6s7.2 2.8 7.2 6.6"/></svg></div>
-          <h3>Dermatologia pediatrica</h3>
-          <p>Visite dedicate ai più piccoli, per la diagnosi e la gestione delle patologie cutanee dell'infanzia.</p>
-        </div>
-        <div class="spec-card">
-          <div class="spec-icon"><svg viewBox="0 0 24 24"><path d="M12 3l6 2.6v4.3c0 4.5-2.6 7.6-6 9-3.4-1.4-6-4.5-6-9V5.6z"/></svg></div>
-          <h3>Venereologia</h3>
-          <p>Diagnosi e cura delle malattie a trasmissione sessuale, in un contesto riservato e attento al paziente.</p>
-        </div>
-        <div class="spec-card">
-          <div class="spec-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.3"/><circle cx="12" cy="12" r="5.2"/><circle cx="9.8" cy="10.3" r="0.9" fill="currentColor" stroke="none"/><circle cx="13.8" cy="13.2" r="0.9" fill="currentColor" stroke="none"/></svg></div>
-          <h3>Micologia</h3>
-          <p>Diagnosi e trattamento delle micosi cutanee e ungueali, con esami mirati per una terapia efficace.</p>
-        </div>
-        <div class="spec-card">
-          <div class="spec-icon"><svg viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M18.3 4l.6 1.6 1.6.6-1.6.6-.6 1.6-.6-1.6-1.6-.6 1.6-.6z"/></svg></div>
-          <h3>Dermatologia estetica</h3>
-          <p>Trattamenti di biorivitalizzazione, peeling e laserterapia per la salute e l'aspetto della pelle.</p>
-        </div>
-        </div>
-      </div>
-
-      <!-- VARIANTE 2 — schede con immagine (slider con peek) -->
-      <div class="section-head reveal" style="margin-top:90px;">
-        <p class="eyebrow">Alternativa</p>
-        <h2>Variante 2 — schede con immagine</h2>
-        <p>Stesso percorso clinico, con un'immagine di riferimento per ogni specializzazione. Foto segnaposto a scopo dimostrativo.</p>
       </div>
       <div class="spec-slider-wrap reveal">
         <div class="spec-slider" id="specSlider">
           <div class="spec-photo-card">
-            <div class="spec-photo-card-img"><img src="images/spec-01-clinica.jpg" alt="Visita dermatologica in studio" loading="lazy"></div>
+            <div class="spec-photo-card-img"><img src="images/spec-02-dermoscopia.jpg" alt="Dermatoscopia e mappatura di un neo" loading="lazy"></div>
             <div class="spec-photo-card-body">
-              <h3>Dermatologia clinica</h3>
-              <p>Visite e diagnosi per patologie cutanee comuni e complesse, con impostazione di un percorso terapeutico su misura.</p>
-            </div>
-          </div>
-          <div class="spec-photo-card">
-            <div class="spec-photo-card-img"><img src="images/spec-02-dermoscopia.jpg" alt="Dermoscopia e mappatura di un neo" loading="lazy"></div>
-            <div class="spec-photo-card-body">
-              <h3>Dermoscopia e mappatura nei</h3>
-              <p>Analisi digitale dei nevi per l'individuazione precoce di lesioni sospette e la prevenzione del melanoma.</p>
+              <h3>Dermatoscopia e mappatura nevi</h3>
+              <p>Valutazione dei nevi in epiluminescenza, per l'individuazione precoce di lesioni sospette e la prevenzione del melanoma.</p>
             </div>
           </div>
           <div class="spec-photo-card">
@@ -1646,13 +1489,6 @@
             </div>
           </div>
           <div class="spec-photo-card">
-            <div class="spec-photo-card-img"><img src="images/spec-05-tricologia.jpg" alt="Capelli sani, tema tricologia" loading="lazy"></div>
-            <div class="spec-photo-card-body">
-              <h3>Tricologia</h3>
-              <p>Valutazione del cuoio capelluto e diagnosi delle problematiche legate alla caduta e alla salute dei capelli.</p>
-            </div>
-          </div>
-          <div class="spec-photo-card">
             <div class="spec-photo-card-img"><img src="images/spec-06-pediatrica.jpg" alt="Visita dermatologica pediatrica" loading="lazy"></div>
             <div class="spec-photo-card-body">
               <h3>Dermatologia pediatrica</h3>
@@ -1667,6 +1503,13 @@
             </div>
           </div>
           <div class="spec-photo-card">
+            <div class="spec-photo-card-img"><img src="images/spec-05-tricologia.jpg" alt="Capelli sani, tema tricologia" loading="lazy"></div>
+            <div class="spec-photo-card-body">
+              <h3>Tricologia e malattie delle unghie</h3>
+              <p>Valutazione del cuoio capelluto e diagnosi delle problematiche legate alla caduta dei capelli e alle patologie ungueali.</p>
+            </div>
+          </div>
+          <div class="spec-photo-card">
             <div class="spec-photo-card-img"><img src="images/spec-08-micologia.jpg" alt="Analisi di laboratorio per micologia" loading="lazy"></div>
             <div class="spec-photo-card-body">
               <h3>Micologia</h3>
@@ -1674,20 +1517,138 @@
             </div>
           </div>
           <div class="spec-photo-card">
+            <!-- Foto segnaposto (stock, licenza libera) -->
+            <div class="spec-photo-card-img"><img src="images/spec-10-immunopatologia.jpg" alt="Preparazione per esame clinico dermatologico" loading="lazy"></div>
+            <div class="spec-photo-card-body">
+              <h3>Immunopatologia cutanea</h3>
+              <p>Diagnosi e gestione delle patologie cutanee su base immunologica e autoimmune, per un percorso terapeutico mirato.</p>
+            </div>
+          </div>
+          <div class="spec-photo-card">
+            <!-- Foto segnaposto (stock, licenza libera) -->
+            <div class="spec-photo-card-img"><img src="images/spec-11-allergologica.jpg" alt="Test allergologico cutaneo" loading="lazy"></div>
+            <div class="spec-photo-card-body">
+              <h3>Dermatologia allergologica</h3>
+              <p>Individuazione e trattamento delle reazioni allergiche cutanee, dalle dermatiti da contatto alle intolleranze, attraverso test mirati.</p>
+            </div>
+          </div>
+          <div class="spec-photo-card">
             <div class="spec-photo-card-img"><img src="images/spec-09-estetica.jpg" alt="Trattamento di dermatologia estetica" loading="lazy"></div>
             <div class="spec-photo-card-body">
               <h3>Dermatologia estetica</h3>
-              <p>Trattamenti di biorivitalizzazione, peeling e laserterapia per la salute e l'aspetto della pelle.</p>
+              <p>Laserterapia, biostimolazione e biorivitalizzanti, trattamento delle discromie cutanee e mesoterapia per la salute e l'aspetto della pelle.</p>
             </div>
           </div>
         </div>
-        <button type="button" class="slider-nav prev" aria-label="Specializzazione precedente">
+        <button type="button" class="slider-nav prev" aria-label="Prestazione precedente">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <button type="button" class="slider-nav next" aria-label="Specializzazione successiva">
+        <button type="button" class="slider-nav next" aria-label="Prestazione successiva">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M9 18l6-6-6-6"/></svg>
         </button>
         <div class="slider-dots" id="specSliderDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERCHÉ -->
+  <section id="perche">
+    <div class="container">
+      <div class="why reveal">
+        <div class="bg-orbs"><div class="orb orb-a"></div><div class="orb orb-b"></div></div>
+        <div class="section-head">
+          <p class="eyebrow">Perché scegliere lo studio</p>
+          <h2>Un metodo clinico, non una promessa estetica.</h2>
+        </div>
+        <div class="why-grid">
+          <div class="why-item">
+            <span class="num">01</span>
+            <h3>Équipe multidisciplinare</h3>
+            <p>Tre specialisti con ambiti di approfondimento diversi, per una copertura clinica più completa.</p>
+          </div>
+          <div class="why-item">
+            <span class="num">02</span>
+            <h3>Diagnosi rigorosa</h3>
+            <p>Ogni percorso terapeutico nasce da una valutazione clinica approfondita, mai da un trattamento standard.</p>
+          </div>
+          <div class="why-item">
+            <span class="num">03</span>
+            <h3>Dermoscopia avanzata</h3>
+            <p>Strumentazione diagnostica dedicata alla mappatura dei nei e al controllo delle lesioni cutanee.</p>
+          </div>
+          <div class="why-item">
+            <span class="num">04</span>
+            <h3>Sede accessibile</h3>
+            <p>Studio nel centro di Lecco, facilmente raggiungibile e con orari organizzati su appuntamento.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STUDIO -->
+  <section id="studio">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">La sede</p>
+        <h2>Lo studio a Lecco</h2>
+        <p>Il Centro Medico Specialistico DERMATOLOGICA si trova nel cuore di Lecco, in un ambiente pensato per accogliere ogni visita con la massima riservatezza.</p>
+      </div>
+      <div class="studio-slider reveal" aria-label="Foto dello studio">
+        <div class="studio-slider-track" id="studioSliderTrack">
+          <!-- Foto segnaposto: verranno sostituite con scatti reali dello studio -->
+          <div class="studio-slide" style="background:linear-gradient(135deg, rgba(68,90,103,.20), rgba(191,175,156,.16)), var(--paper-deep);">
+            <svg class="studio-slide-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.3"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M8 6l1.5-2.5h5L16 6"/><circle cx="12" cy="13" r="3.5"/></svg>
+            <span class="studio-slide-caption">Reception</span>
+          </div>
+          <div class="studio-slide" style="background:linear-gradient(135deg, rgba(191,175,156,.20), rgba(68,90,103,.14)), var(--paper-deep);">
+            <svg class="studio-slide-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.3"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M8 6l1.5-2.5h5L16 6"/><circle cx="12" cy="13" r="3.5"/></svg>
+            <span class="studio-slide-caption">Sala d'attesa</span>
+          </div>
+          <div class="studio-slide" style="background:linear-gradient(135deg, rgba(68,90,103,.16), rgba(191,175,156,.20)), var(--paper-deep);">
+            <svg class="studio-slide-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.3"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M8 6l1.5-2.5h5L16 6"/><circle cx="12" cy="13" r="3.5"/></svg>
+            <span class="studio-slide-caption">Ambulatorio dermoscopia</span>
+          </div>
+          <div class="studio-slide" style="background:linear-gradient(135deg, rgba(191,175,156,.16), rgba(68,90,103,.20)), var(--paper-deep);">
+            <svg class="studio-slide-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.3"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M8 6l1.5-2.5h5L16 6"/><circle cx="12" cy="13" r="3.5"/></svg>
+            <span class="studio-slide-caption">Studio del Dott. Recalcati</span>
+          </div>
+          <div class="studio-slide" style="background:linear-gradient(135deg, rgba(68,90,103,.18), rgba(191,175,156,.18)), var(--paper-deep);">
+            <svg class="studio-slide-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.3"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M8 6l1.5-2.5h5L16 6"/><circle cx="12" cy="13" r="3.5"/></svg>
+            <span class="studio-slide-caption">Sala trattamenti</span>
+          </div>
+        </div>
+        <button type="button" class="slider-nav prev" aria-label="Foto precedente">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" class="slider-nav next" aria-label="Foto successiva">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+        <div class="slider-dots" id="studioSliderDots"></div>
+      </div>
+    </div>
+    <div class="container studio-wrap">
+      <div class="studio-info reveal">
+        <p class="eyebrow">Orari</p>
+        <ul class="orari-list">
+          <li><span>Lunedì – Venerdì</span><span>9:00 – 19:00</span></li>
+          <li><span>Sabato</span><span>9:00 – 13:00</span></li>
+          <li><span>Domenica</span><span>Chiuso</span></li>
+        </ul>
+        <ul class="studio-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Via Raffaello Sanzio 5, 23900 Lecco (LC)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Visite su appuntamento, dal lunedì al venerdì</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> 392 691 7777</li>
+        </ul>
+        <a href="tel:+393926917777" class="btn btn-primary">Chiama lo studio</a>
+      </div>
+      <div class="map-frame reveal" id="mapFrame" data-map-src="https://maps.google.com/maps?q=Via%20Raffaello%20Sanzio%205%2C%2023900%20Lecco&t=m&z=15&output=embed" data-map-title="Come raggiungere lo Studio DERMATOLOGICA a Lecco">
+        <div class="map-placeholder" id="mapPlaceholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <p>La mappa è fornita da Google e, se la carichi, imposta i suoi cookie.</p>
+          <button type="button" class="btn btn-ghost" id="mapLoadBtn">Carica la mappa</button>
+          <a class="map-placeholder-link" href="https://maps.google.com/maps?q=Via%20Raffaello%20Sanzio%205%2C%2023900%20Lecco" target="_blank" rel="noopener noreferrer">Apri in Google Maps</a>
+        </div>
       </div>
     </div>
   </section>
@@ -1783,15 +1744,7 @@
     play();
   }
 
-  // Marquee specializzazioni: raddoppia le card per lo scorrimento continuo senza scatti
-  (function(){
-    const track = document.getElementById('specTrack');
-    if(!track) return;
-    const original = Array.from(track.children).map(card => card.outerHTML).join('');
-    track.insertAdjacentHTML('beforeend', original);
-  })();
-
-  // Specializzazioni variante 2: slider schede con immagine (frecce + puntini)
+  // Prestazioni: slider schede con immagine (frecce + puntini)
   (function(){
     const track = document.getElementById('specSlider');
     const dotsWrap = document.getElementById('specSliderDots');
@@ -1856,39 +1809,6 @@
       dots.forEach((d, i) => d.classList.toggle('active', i === idx));
     }, {root: track, threshold: 0.6});
     slides.forEach(s => teamSliderIO.observe(s));
-  })();
-
-  // Team variante 2: slider schede medico (frecce + puntini)
-  (function(){
-    const track = document.getElementById('doctorSlider');
-    const dotsWrap = document.getElementById('doctorSliderDots');
-    if(!track || !dotsWrap) return;
-    const slides = Array.from(track.children);
-    const dots = slides.map((_, i) => {
-      const dot = document.createElement('button');
-      dot.type = 'button';
-      dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
-      dot.setAttribute('aria-label', 'Vai al medico ' + (i + 1));
-      dot.addEventListener('click', () => {
-        slides[i].scrollIntoView({behavior: 'smooth', inline: 'start', block: 'nearest'});
-      });
-      dotsWrap.appendChild(dot);
-      return dot;
-    });
-    track.parentElement.querySelectorAll('.slider-nav').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const dir = btn.classList.contains('next') ? 1 : -1;
-        track.scrollBy({left: dir * (slides[0].offsetWidth + 24), behavior: 'smooth'});
-      });
-    });
-    const doctorSliderIO = new IntersectionObserver((entries) => {
-      const visible = entries.filter(e => e.isIntersecting);
-      if (!visible.length) return;
-      const top = visible.reduce((a, b) => b.intersectionRatio > a.intersectionRatio ? b : a);
-      const idx = slides.indexOf(top.target);
-      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-    }, {root: track, threshold: 0.6});
-    slides.forEach(s => doctorSliderIO.observe(s));
   })();
 
   // Studio photo slider
@@ -1982,8 +1902,8 @@
   const header = document.querySelector('header');
   window.addEventListener('scroll', ()=>{
     header.style.background = window.scrollY > 40
-      ? 'rgba(243,245,239,0.92)'
-      : 'rgba(243,245,239,0.78)';
+      ? 'rgba(245,242,234,0.92)'
+      : 'rgba(245,242,234,0.78)';
   });
 
   // WhatsApp float: appare solo dopo l'hero (da fermo copriva la CTA "Prenota una visita").
