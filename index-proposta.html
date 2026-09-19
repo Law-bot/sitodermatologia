@@ -231,10 +231,10 @@
   }
 
   .eyebrow{
-    font-family:var(--mono);
-    font-size:14px;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
+    font-family:var(--serif);
+    font-size:15px;
+    letter-spacing:0.08em;
+    text-transform:none;
     color:var(--sage);
     display:flex;
     align-items:center;
@@ -243,16 +243,20 @@
   }
   .eyebrow::before{
     content:'';
-    width:16px;
-    height:16px;
-    border:1.4px solid var(--sage);
-    border-radius:50%;
+    width:20px;
+    height:14px;
+    background-color:var(--sage);
+    -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 18' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 15 L6 5 L9.5 11 L14 4 L18 12 L22 15'/%3E%3C/svg%3E");
+    mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 18' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 15 L6 5 L9.5 11 L14 4 L18 12 L22 15'/%3E%3C/svg%3E");
+    -webkit-mask-size:contain;mask-size:contain;
+    -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+    -webkit-mask-position:center;mask-position:center;
     position:relative;
     flex-shrink:0;
   }
   /* Sui pannelli scuri (.why, .faq-panel) il sage standard scende a ~2.3:1 di contrasto sul fondo dark: sotto soglia AA. */
   .why .eyebrow, .faq-panel .eyebrow{color:var(--sage-light);}
-  .why .eyebrow::before, .faq-panel .eyebrow::before{border-color:var(--sage-light);}
+  .why .eyebrow::before, .faq-panel .eyebrow::before{background-color:var(--sage-light);}
 
   h1,h2,h3{font-family:var(--serif);font-weight:400;color:var(--ink);letter-spacing:0.02em;}
 
@@ -278,15 +282,15 @@
     display:flex;flex-direction:column;line-height:1.05;
   }
   .logo span{
-    font-family:var(--mono);
-    font-size:10px;
-    letter-spacing:.16em;
+    font-family:var(--serif);
+    font-size:11px;
+    letter-spacing:.1em;
     color:var(--sage);
     margin-top:3px;
   }
   nav.links{display:flex;gap:34px;}
   nav.links a{
-    font-family:var(--mono);
+    font-family:var(--serif);
     font-size:14px;font-weight:500;letter-spacing:0.02em;
     position:relative;padding:4px 0;
   }
@@ -375,7 +379,7 @@
     display:flex;flex-direction:column;align-items:center;gap:4px;
   }
   .mobile-menu-links a{
-    font-family:var(--mono);
+    font-family:var(--serif);
     font-weight:500;
     letter-spacing:0.01em;
     font-size:clamp(22px,7.5vw,34px);
@@ -395,7 +399,7 @@
   .mobile-menu-phone{
     position:relative;z-index:1;
     margin-top:36px;
-    font-family:var(--mono);font-size:15px;color:var(--ink-soft);
+    font-family:var(--serif);font-size:15px;color:var(--ink-soft);
     display:flex;align-items:center;gap:8px;
     opacity:0;transform:translateY(18px);
     transition:opacity .5s var(--ease) .46s, transform .5s var(--ease) .46s;
@@ -417,7 +421,14 @@
     box-sizing:border-box;
   }
   .hero .hero-grid{width:100%;}
-  .hero-bg-slideshow{position:absolute;inset:0;z-index:0;}
+  .hero-bg-slideshow{
+    position:absolute;inset:0;z-index:0;
+    opacity:0;
+    animation:hero-photo-reveal 1.3s var(--ease) 1.6s forwards;
+  }
+  @keyframes hero-photo-reveal{
+    to{opacity:1;}
+  }
   .hero-bg-slide{
     position:absolute;inset:0;
     background-size:cover;
@@ -458,23 +469,48 @@
     background:radial-gradient(ellipse 65% 60% at 50% 42%, rgba(37,48,65,.78) 0%, rgba(37,48,65,.58) 45%, rgba(37,48,65,.32) 75%, rgba(37,48,65,.2) 100%),
       linear-gradient(0deg, rgba(37,48,65,.55) 0%, rgba(37,48,65,0) 32%);
   }
+  .hero-resegone-line{
+    position:absolute;inset:0;width:100%;height:100%;z-index:1;
+    pointer-events:none;
+  }
+  .hero-resegone-line path{
+    fill:none;stroke:var(--sage-light);stroke-width:2.5;
+    stroke-linecap:round;stroke-linejoin:round;
+    opacity:0.8;
+    stroke-dasharray:2700;stroke-dashoffset:2700;
+    animation:resegone-draw 1.8s var(--ease) 0.1s forwards;
+  }
+  @keyframes resegone-draw{
+    to{stroke-dashoffset:0;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero-resegone-line path{animation:none;stroke-dashoffset:0;}
+    .hero-bg-slideshow{animation:none;opacity:1;}
+    .hero-grid{animation:none;opacity:1;transform:none;}
+  }
   .hero-visual-tag{
     position:absolute;right:20px;bottom:20px;z-index:1;
-    font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
+    font-family:var(--serif);font-size:11px;letter-spacing:.03em;
     color:rgba(255,255,255,.85);
     background:rgba(37,48,65,.45);
     padding:5px 10px;border-radius:999px;
     backdrop-filter:blur(4px);
   }
   .hero-grid{
+    opacity:0;
+    animation:hero-text-reveal 1s var(--ease) 2.5s forwards;
     position:relative;z-index:1;
     display:grid;grid-template-columns:1fr;
     max-width:800px;
     margin:0 auto;
     text-align:center;
   }
-  .hero .eyebrow{color:var(--sage-light);justify-content:center;text-shadow:0 1px 12px rgba(0,0,0,.5);}
-  .hero .eyebrow::before{border-color:var(--sage-light);}
+  @keyframes hero-text-reveal{
+    from{opacity:0;transform:translateY(14px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  .hero .eyebrow{color:var(--sage-light);justify-content:center;text-shadow:0 1px 12px rgba(0,0,0,.5);text-transform:none;}
+  .hero .eyebrow::before{content:none;}
   .hero h1{
     font-size:clamp(36px,4.8vw,64px);
     line-height:1.04;
@@ -496,7 +532,7 @@
   .hero .btn-ghost:hover{border-color:var(--sage-light);}
   .hero-meta{
     display:flex;gap:32px;flex-wrap:wrap;
-    font-family:var(--mono);font-size:13px;color:rgba(245,242,234,.92);
+    font-family:var(--serif);font-size:14px;color:rgba(245,242,234,.92);
     justify-content:center;
     text-shadow:0 1px 12px rgba(0,0,0,.5);
   }
@@ -588,8 +624,8 @@
   }
   .team-card h3{font-size:21px;margin-bottom:4px;}
   .team-card .role{
-    font-family:var(--mono);font-size:12px;color:var(--brass);
-    text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;display:block;
+    font-family:var(--serif);font-size:13px;color:var(--brass);
+    text-transform:none;letter-spacing:.04em;margin-bottom:14px;display:block;
   }
   .team-card p{font-family:var(--google-sans);font-size:14px;line-height:1.7;letter-spacing:0.01em;color:var(--ink-soft);}
   .team-card-btn{margin-top:22px; padding:7px 16px;font-size:12.5px;}
@@ -641,7 +677,7 @@
     display:grid;grid-template-columns:repeat(4,1fr);gap:36px;
   }
   .why-item .num{
-    font-family:var(--mono);font-size:12px;color:var(--brass-light);
+    font-family:var(--serif);font-size:13px;color:var(--brass-light);
     margin-bottom:16px;display:block;
   }
   .why-item h3{color:var(--paper);font-size:18px;margin-bottom:10px;}
@@ -686,7 +722,7 @@
   }
   .studio-slide-caption{
     position:absolute;left:0;right:0;bottom:0;
-    font-family:var(--mono);
+    font-family:var(--serif);
     font-size:12px;
     letter-spacing:.06em;
     color:var(--ink);
@@ -696,14 +732,15 @@
   .slider-nav{
     position:absolute;top:38%;transform:translateY(-50%);
     width:44px;height:44px;border-radius:50%;
-    background:var(--paper);border:1px solid var(--glass-border);
+    background:var(--glass);border:1px solid var(--glass-border);
+    -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
     display:flex;align-items:center;justify-content:center;
     box-shadow:0 8px 20px -8px rgba(37,48,65,.25);
-    transition:transform .25s var(--ease), border-color .25s var(--ease);
+    transition:transform .25s var(--ease), border-color .25s var(--ease), background .25s var(--ease);
     z-index:2;
   }
   .slider-nav svg{width:16px;height:16px;stroke:var(--ink);}
-  .slider-nav:hover{transform:translateY(-50%) scale(1.06);border-color:var(--sage);}
+  .slider-nav:hover{transform:translateY(-50%) scale(1.06);border-color:var(--sage);background:var(--paper);}
   .slider-nav.prev{left:-6px;}
   .slider-nav.next{right:-6px;}
   .slider-dots{display:flex;gap:8px;justify-content:center;margin-top:20px;}
@@ -749,7 +786,7 @@
   }
   .map-placeholder svg{width:34px;height:34px;stroke:var(--sage);opacity:.6;}
   .map-placeholder p{font-family:var(--google-sans);font-size:13px;line-height:1.6;color:var(--ink-soft);max-width:280px;}
-  .map-placeholder-link{font-family:var(--mono);font-size:12px;color:var(--sage);text-decoration:underline;}
+  .map-placeholder-link{font-family:var(--serif);font-size:13px;color:var(--sage);text-decoration:underline;}
 
   /* ---------- COOKIE BANNER ---------- */
   .cookie-banner{
@@ -766,7 +803,7 @@
     display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;
   }
   .cookie-banner-text{flex:1 1 420px;min-width:280px;}
-  .cookie-banner-title{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--brass-light);margin-bottom:8px;}
+  .cookie-banner-title{font-family:var(--serif);font-size:13px;letter-spacing:.06em;text-transform:none;color:var(--brass-light);margin-bottom:8px;}
   .cookie-banner-text p{font-family:var(--google-sans);font-size:13.5px;line-height:1.65;color:rgba(255,255,255,.72);}
   .cookie-details-toggle{color:var(--sage-light);text-decoration:underline;font-family:inherit;font-size:inherit;}
   .cookie-details{margin-top:14px;}
@@ -820,7 +857,7 @@
   .privacy-modal-close svg{width:16px;height:16px;stroke:currentColor;}
   .privacy-modal-close:hover{border-color:var(--sage-light);background:rgba(255,255,255,.06);}
   .privacy-modal h2{font-family:var(--serif);letter-spacing:0.02em;color:var(--paper);font-size:27px;margin:0 0 6px;padding-right:40px;}
-  .privacy-modal .privacy-updated{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--brass-light);margin-bottom:28px;}
+  .privacy-modal .privacy-updated{font-family:var(--serif);font-size:12.5px;letter-spacing:.05em;text-transform:none;color:var(--brass-light);margin-bottom:28px;}
   .privacy-modal h3{font-family:var(--google-sans);font-weight:600;font-size:15px;color:var(--paper);margin:26px 0 8px;}
   .privacy-modal h3:first-of-type{margin-top:0;}
   .privacy-modal p, .privacy-modal li{font-family:var(--google-sans);font-size:13.5px;line-height:1.7;color:rgba(255,255,255,.72);}
@@ -923,7 +960,7 @@
   }
   .contact-block:last-child{border-bottom:1px solid var(--glass-border);}
   .contact-block svg{width:20px;height:20px;stroke:var(--sage);flex-shrink:0;}
-  .contact-block .label{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
+  .contact-block .label{font-family:var(--serif);font-size:12.5px;letter-spacing:.05em;text-transform:none;color:var(--ink-soft);}
   .contact-block .value{font-size:16px;margin-top:2px; margin-left: 10px;}
   .contact-block a.value:hover{color:var(--sage);}
 
@@ -982,12 +1019,18 @@
   .footer-brand p{font-family:var(--google-sans);}
   .footer-cols{display:flex;gap:64px;}
   .footer-col h4{
-    font-family:var(--mono);font-size:14px;letter-spacing:.14em;text-transform:uppercase;
+    font-family:var(--serif);font-size:15px;letter-spacing:.08em;text-transform:none;
     color:var(--brass-light);margin-bottom:18px;
     display:flex;align-items:center;gap:10px;
   }
   .footer-col h4::before{
-    content:'';width:16px;height:16px;border:1.4px solid currentColor;border-radius:50%;flex-shrink:0;
+    content:'';width:20px;height:14px;flex-shrink:0;
+    background-color:currentColor;
+    -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 18' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 15 L6 5 L9.5 11 L14 4 L18 12 L22 15'/%3E%3C/svg%3E");
+    mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 18' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 15 L6 5 L9.5 11 L14 4 L18 12 L22 15'/%3E%3C/svg%3E");
+    -webkit-mask-size:contain;mask-size:contain;
+    -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+    -webkit-mask-position:center;mask-position:center;
   }
   .footer-col a, .footer-col span{font-family:var(--google-sans);display:block;font-size:14px;margin-bottom:10px;color:rgba(245,242,234,.65);}
   .footer-col a:hover{color:var(--paper);}
@@ -1059,16 +1102,16 @@
   }
   .trust-item:last-child{border-right:0;}
   .trust-kicker{
-    font-family:var(--mono);
-    font-size:10px;
-    letter-spacing:.12em;
+    font-family:var(--serif);
+    font-size:12px;
+    letter-spacing:.06em;
     color:var(--brass);
     padding-top:3px;
   }
   .trust-item strong{
     display:block;
-    font-family:var(--mono);
-    font-size:14px;
+    font-family:var(--serif);
+    font-size:15px;
     margin-bottom:4px;
   }
   .trust-item span:not(.trust-kicker){
@@ -1362,12 +1405,20 @@
       <div class="hero-bg-slide hero-bg-slide-placeholder"><span>Foto 3 — segnaposto</span></div>
     </div>
     <div class="hero-scrim"></div>
+    <!-- PROVA: linea stilizzata che richiama il profilo del Resegone, visibile nella foto di sfondo.
+         Disegnata a mano in modo approssimativo, da rifinire quando avremo la forma esatta del logo. -->
+    <svg class="hero-resegone-line" viewBox="0 0 1920 1082" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <path d="M0,440 L100,465 L200,490 L280,445 L350,405 L420,435 L480,400 L540,420 L600,400 L660,410 L720,390 L780,370 L820,405 L850,365 L875,400 L900,355 L920,385 L945,345 L965,380 L985,350 L1005,385 L1025,340 L1045,375 L1065,355 L1090,390 L1115,365 L1150,400 L1190,380 L1230,410 L1280,395 L1330,420 L1400,440 L1480,415 L1560,450 L1640,430 L1720,460 L1800,445 L1880,470 L1920,460"/>
+    </svg>
     <span class="hero-visual-tag">Segnaposto — da sostituire</span>
+    <!-- Barra di avanzamento foto slideshow: nascosta per ora, finché c'è una sola foto reale.
     <div class="hero-progress" id="heroProgress" aria-hidden="true">
       <span class="hero-progress-bar"><span class="hero-progress-fill"></span></span>
       <span class="hero-progress-bar"><span class="hero-progress-fill"></span></span>
       <span class="hero-progress-bar"><span class="hero-progress-fill"></span></span>
     </div>
+    -->
+
     <div class="container hero-grid">
       <div>
         <p class="eyebrow">Studio Medico Dermatologica · Lecco</p>
@@ -1417,8 +1468,7 @@
       <div class="team-slider-wrap">
       <div class="team-grid" id="teamSlider">
         <div class="team-card reveal">
-          <!-- Foto segnaposto (stock, licenza libera) in attesa della foto vera del dottore -->
-          <div class="avatar-ring"><img src="images/team-placeholder-01.jpg" alt="Dott. Sebastiano Recalcati" loading="lazy"></div>
+          <div class="avatar-ring"><img src="images/team-sebastiano-recalcati.jpg" alt="Dott. Sebastiano Recalcati" loading="lazy"></div>
           <div class="team-card-info">
             <h3>Dott. Sebastiano Recalcati</h3>
             <span class="role">Medico Chirurgo · Dermatologia e Venereologia</span>
@@ -1629,16 +1679,13 @@
     </div>
     <div class="container studio-wrap">
       <div class="studio-info reveal">
-        <p class="eyebrow">Orari</p>
-        <ul class="orari-list">
-          <li><span>Lunedì – Venerdì</span><span>9:00 – 19:00</span></li>
-          <li><span>Sabato</span><span>9:00 – 13:00</span></li>
-          <li><span>Domenica</span><span>Chiuso</span></li>
-        </ul>
+        <p class="eyebrow">Come raggiungerci</p>
         <ul class="studio-list">
           <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Via Raffaello Sanzio 5, 23900 Lecco (LC)</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Visite su appuntamento, dal lunedì al venerdì</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> 392 691 7777</li>
+          <!-- TODO: testo segnaposto — sostituire con indicazioni reali su dove parcheggiare (es. parcheggio pubblico più vicino, eventuale convenzione) -->
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/><path d="M9 13h3.5a1.75 1.75 0 0 0 0-3.5H9V16"/></svg> Parcheggio nelle vicinanze — dettagli in arrivo</li>
         </ul>
         <a href="tel:+393926917777" class="btn btn-primary">Chiama lo studio</a>
       </div>
@@ -1653,9 +1700,155 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="faq-panel reveal">
+        <div class="bg-orbs"><div class="orb orb-a"></div><div class="orb orb-b"></div></div>
+        <div class="section-head">
+          <p class="eyebrow">Domande frequenti</p>
+          <h2>Ciò che i pazienti ci chiedono più spesso.</h2>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item open">
+            <button type="button" class="faq-q" aria-expanded="true">Come si prenota una visita dermatologica?<span class="plus"></span></button>
+            <div class="faq-a"><p>Puoi prenotare telefonando allo studio al numero 392 691 7777, oppure inviando una richiesta tramite il modulo presente in questa pagina: verrai ricontattato per confermare data e orario.</p></div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-q" aria-expanded="false">Cos'è la mappatura dei nei e ogni quanto va ripetuta?<span class="plus"></span></button>
+            <div class="faq-a"><p>È un esame di dermoscopia digitale che fotografa e archivia i nei per individuare precocemente eventuali variazioni sospette. La frequenza consigliata varia in base al fototipo e alla storia clinica: verrà indicata dal medico durante la prima visita.</p></div>
+          </div>
+          <div class="faq-item">
+            <button type="button" class="faq-q" aria-expanded="false">Lo studio si occupa anche di dermatologia pediatrica?<span class="plus"></span></button>
+            <div class="faq-a"><p>Sì, l'équipe segue anche pazienti in età pediatrica per problematiche cutanee comuni e controlli dermatologici di routine.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section id="final-cta">
+    <div class="container">
+      <div class="final-cta-wrap reveal">
+        <div>
+          <p class="eyebrow">Prima visita dermatologica</p>
+          <h2>Hai bisogno di una valutazione della pelle?</h2>
+          <p>Contatta lo studio per ricevere informazioni e concordare il giorno della visita.</p>
+        </div>
+        <div class="final-cta-actions">
+          <a href="tel:+393926917777" class="btn btn-primary">Chiama lo studio</a>
+          <a href="#contatti" class="btn btn-secondary">Richiedi informazioni</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATTI -->
+  <section id="contatti">
+    <div class="bg-orbs"><div class="orb orb-a"></div><div class="orb orb-b"></div></div>
+    <div class="container contact-wrap no-form">
+      <div class="contact-side reveal">
+        <p class="eyebrow">Contatti</p>
+        <h2>Prenota la tua visita</h2>
+        <p>Scrivici per informazioni o per fissare un appuntamento: ti risponderemo al più presto. Per richieste urgenti, il modo più rapido resta la telefonata.</p>
+
+        <!-- Finché il form resta nascosto, i blocchi contatto occupano tutta la larghezza in riga invece che in colonna stretta (vedi .contact-blocks nel CSS) -->
+        <div class="contact-blocks">
+          <div class="contact-block">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div><span class="label">Telefono</span><a class="value" href="tel:+393926917777">392 691 7777</a></div>
+          </div>
+          <div class="contact-block">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            <div><span class="label">Email</span><a class="value" href="mailto:info@sebastianorecalcati.it">info@sebastianorecalcati.it</a></div>
+          </div>
+          <div class="contact-block">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><span class="label">Indirizzo</span><span class="value">Via Raffaello Sanzio 5, 23900 Lecco</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!--sezione form (nascosta finché non si decide il backend di invio: PHP su Aruba o servizio esterno tipo Formspree — il markup attuale ha attributi Netlify che su Aruba non funzionano)
+      <form class="reveal" name="contatto" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contatto">
+        <p style="display:none;"><label>Non compilare: <input name="bot-field"></label></p>
+
+        <div class="field">
+          <input type="text" id="nome" name="nome" placeholder=" " required>
+          <label for="nome">Nome e cognome</label>
+        </div>
+        <div class="field">
+          <input type="tel" id="telefono" name="telefono" placeholder=" " required>
+          <label for="telefono">Telefono</label>
+        </div>
+        <div class="field">
+          <input type="email" id="email" name="email" placeholder=" " required>
+          <label for="email">Email</label>
+        </div>
+        <div class="field">
+          <select id="motivo" name="motivo">
+            <option value="Visita dermatologica">Visita dermatologica</option>
+            <option value="Mappatura nei">Mappatura nei</option>
+            <option value="Chirurgia dermatologica">Chirurgia dermatologica</option>
+            <option value="Tricologia">Tricologia</option>
+            <option value="Dermatologia estetica">Dermatologia estetica</option>
+            <option value="Altro">Altro</option>
+          </select>
+        </div>
+        <div class="field">
+          <textarea id="messaggio" name="messaggio" placeholder=" "></textarea>
+          <label for="messaggio">Messaggio (facoltativo)</label>
+        </div>
+
+        <div class="consent-row">
+          <input type="checkbox" id="consenso" name="consenso" required>
+          <label for="consenso" class="consent">Ho letto l'<a href="#" class="privacy-modal-trigger">informativa sulla privacy</a> e acconsento al trattamento dei miei dati personali ai sensi del Regolamento UE 2016/679 (GDPR) per essere ricontattato dallo studio.</label>
+        </div>
+
+        <p class="form-note">Usa il modulo per una richiesta di informazioni o per concordare un appuntamento. Per richieste urgenti, è preferibile telefonare allo studio.</p>
+        <button type="submit" class="btn btn-primary submit-btn">Invia richiesta</button>
+      </form>
+      fine sezione form-->
+    </div>
+  </section>
 
 </main>
 
+<footer>
+  <div class="bg-orbs"><div class="orb orb-a"></div><div class="orb orb-b"></div></div>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>DERMATOLOGICA</h3>
+        <p style="max-width:280px;font-size:13.5px;">Centro Medico Specialistico<br>Via Raffaello Sanzio 5, 23900 Lecco</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Studio</h4>
+          <a href="#team">Chi siamo</a>
+          <a href="#prestazioni">Prestazioni</a>
+          <a href="#studio">Sede</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contatti</h4>
+          <a href="tel:+393926917777">392 691 7777</a>
+          <a href="mailto:info@sebastianorecalcati.it">info@sebastianorecalcati.it</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legale</h4>
+          <a href="#" class="privacy-modal-trigger">Privacy Policy</a>
+          <a href="#" id="cookieSettingsLink">Preferenze cookie</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Dott. Sebastiano Recalcati — Studio DERMATOLOGICA. Iscritto all'Ordine dei Medici Chirurghi.</span>
+      <span>P.IVA da inserire</span>
+    </div>
+  </div>
+</footer>
 
 <script>
   // Slideshow foto hero: cambia immagine ogni 6 secondi con dissolvenza,
