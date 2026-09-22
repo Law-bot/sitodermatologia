@@ -278,8 +278,9 @@
   .logo{
     font-family:var(--serif);
     letter-spacing:0.02em;
-    font-size:20px;
+    font-size:clamp(15px, 4.5vw, 20px);
     display:flex;flex-direction:column;line-height:1.05;
+    flex-shrink:1;min-width:0;
   }
   .logo span{
     font-family:var(--serif);
@@ -631,6 +632,23 @@
   .team-card-btn{margin-top:22px; padding:7px 16px;font-size:12.5px;}
 
   /* ---------- PRESTAZIONI ---------- */
+  .concern-chips{
+    display:flex;flex-wrap:wrap;gap:10px;
+    margin-bottom:36px;
+  }
+  .concern-chip{
+    font-family:var(--google-sans);font-size:13px;
+    padding:10px 18px;border-radius:999px;
+    border:1px solid var(--glass-border);background:var(--paper);
+    color:var(--ink-soft);
+    transition:border-color .25s var(--ease), color .25s var(--ease), background .25s var(--ease);
+  }
+  .concern-chip:hover, .concern-chip:focus-visible{
+    border-color:var(--sage);color:var(--ink);background:var(--paper-deep);
+  }
+  .concern-chip.active{
+    border-color:var(--sage);color:var(--paper);background:var(--sage);
+  }
 
   /* ---------- SPECIALIZZAZIONI: VARIANTE 2 (schede con immagine) ---------- */
   .spec-slider-wrap{position:relative;}
@@ -946,12 +964,70 @@
   .contact-blocks .contact-block:last-child{border-bottom:1px solid var(--glass-border);}
   .contact-blocks .contact-block .label{display:block;margin-bottom:6px;}
   .contact-blocks .contact-block .value{display:block;margin-left:0;font-size:17px;}
+  /* Con solo Telefono + Indirizzo (email ed eventuale form nascosti), la griglia resta a 2 colonne uguali invece di 3. */
+  .contact-blocks:has(> .contact-block:nth-child(2):last-child){
+    grid-template-columns:repeat(2,1fr);
+    max-width:560px;
+  }
   @media (max-width:980px){
     .contact-blocks{grid-template-columns:1fr 1fr;}
   }
   @media (max-width:640px){
     .contact-blocks{grid-template-columns:1fr;}
+    .contact-blocks:has(> .contact-block:nth-child(2):last-child){grid-template-columns:1fr;max-width:none;}
   }
+
+  /* ---------- MOCKUP DI CONFRONTO (provvisori) ---------- */
+  .mockup-label{
+    font-family:var(--serif);font-size:13px;letter-spacing:.03em;
+    color:var(--brass);margin:36px 0 14px !important;
+    max-width:none !important;
+  }
+  .contact-mockup{margin-bottom:8px;max-width:560px;}
+
+  /* A: lista pulita, senza card */
+  .contact-mockup-a{display:flex;flex-direction:column;gap:0;}
+  .cm-a-row{
+    display:flex;align-items:center;gap:16px;
+    padding:18px 0;border-top:1px solid var(--glass-border);
+  }
+  .cm-a-row:last-of-type{border-bottom:1px solid var(--glass-border);}
+  .cm-a-row svg{width:20px;height:20px;stroke:var(--sage);flex-shrink:0;}
+  .cm-a-row .label{display:block;font-family:var(--serif);font-size:12.5px;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:2px;}
+  .cm-a-row .value{display:block;font-size:17px;}
+  .cm-a-row a.value:hover{color:var(--sage);}
+  .cm-a-btn{margin-top:24px;display:inline-flex;}
+
+  /* B: unica card combinata */
+  .contact-mockup-b{
+    border:1px solid var(--glass-border);border-radius:18px;
+    background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    padding:6px 24px;
+    transition:transform .4s var(--ease), box-shadow .4s var(--ease);
+  }
+  .contact-mockup-b:hover{transform:translateY(-4px);box-shadow:0 20px 40px -22px rgba(37,48,65,.3);}
+  .cm-b-item{display:flex;align-items:center;gap:16px;padding:20px 0;}
+  .cm-b-item svg{width:20px;height:20px;stroke:var(--sage);flex-shrink:0;}
+  .cm-b-item .label{display:block;font-family:var(--serif);font-size:12.5px;letter-spacing:.05em;color:var(--ink-soft);margin-bottom:2px;}
+  .cm-b-item .value{display:block;font-size:17px;}
+  .cm-b-item a.value:hover{color:var(--sage);}
+  .cm-b-divider{height:1px;background:var(--glass-border);}
+
+  /* C: telefono in evidenza tipografica, indirizzo come nota */
+  .contact-mockup-c{padding:8px 0;}
+  .cm-c-label{
+    display:block;font-family:var(--serif);font-size:13px;letter-spacing:.05em;
+    color:var(--ink-soft);margin-bottom:10px;
+  }
+  .cm-c-phone{
+    display:block;font-family:var(--serif);font-size:clamp(34px,4.5vw,46px);
+    color:var(--ink);line-height:1.1;letter-spacing:.01em;
+    margin-bottom:18px;transition:color .25s var(--ease);
+  }
+  .cm-c-phone:hover{color:var(--sage);}
+  .cm-c-address{display:flex;align-items:center;gap:12px;color:var(--ink-soft);font-size:15px;}
+  .cm-c-address svg{width:18px;height:18px;stroke:var(--sage);flex-shrink:0;}
+
   .contact-side h2{margin-bottom:16px;}
   .contact-side p:not(.eyebrow){font-family:var(--google-sans);font-size:14px;line-height:1.75;letter-spacing:0.01em;color:var(--ink-soft);margin-bottom:32px;max-width:420px;}
   .contact-block{
@@ -1060,6 +1136,10 @@
   }
   @media (max-width:640px){
     .container{padding:0 20px;}
+    .nav-inner{padding:14px 16px;}
+    .header-actions{gap:8px;}
+    .header-actions .btn-primary{padding:8px 13px;font-size:13px;gap:5px;}
+    .header-actions .btn-primary span.cta-phone{display:none;}
     .why-grid{grid-template-columns:1fr;}
     .team-card{width:80%;}
     .team-slider-wrap .slider-nav{display:none;}
@@ -1123,7 +1203,6 @@
   }
 
   /* ---------- FINAL CTA ---------- */
-  #final-cta{padding:72px 0;}
   .final-cta-wrap{
     display:flex;
     align-items:center;
@@ -1191,14 +1270,9 @@
     padding-top:20px;
     padding-bottom:20px;
   }
-  #final-cta{
-    padding-top:48px;
-    padding-bottom:48px;
-  }
   @media (max-width:640px){
     section{padding-top:60px;padding-bottom:60px;}
     .hero{padding-top:var(--header-h, 91px);padding-bottom:0;}
-    #final-cta{padding-top:36px;padding-bottom:36px;}
   }
 
   /* ---------- STICKY WHATSAPP ---------- */
@@ -1515,6 +1589,18 @@
         <h2>Un percorso clinico per ogni esigenza della pelle.</h2>
         <p>Dalla prevenzione alla chirurgia, fino alla dermatologia estetica: ogni trattamento nasce da una diagnosi accurata.</p>
       </div>
+      <div class="concern-chips reveal" aria-label="Vai direttamente alla prestazione più adatta">
+        <button type="button" class="concern-chip" data-slide="0">Ho un neo che mi preoccupa</button>
+        <button type="button" class="concern-chip" data-slide="1">Devo rimuovere una lesione</button>
+        <button type="button" class="concern-chip" data-slide="2">Controllo oncologico della pelle</button>
+        <button type="button" class="concern-chip" data-slide="3">Mio figlio ha un problema di pelle</button>
+        <button type="button" class="concern-chip" data-slide="4">Sospetto una malattia sessualmente trasmissibile</button>
+        <button type="button" class="concern-chip" data-slide="5">Perdo capelli o ho problemi alle unghie</button>
+        <button type="button" class="concern-chip" data-slide="6">Penso di avere un fungo della pelle</button>
+        <button type="button" class="concern-chip" data-slide="7">Ho una malattia autoimmune della pelle</button>
+        <button type="button" class="concern-chip" data-slide="8">Ho allergie o dermatiti</button>
+        <button type="button" class="concern-chip" data-slide="9">Vorrei migliorare rughe o macchie</button>
+      </div>
       <div class="spec-slider-wrap reveal">
         <div class="spec-slider" id="specSlider">
           <div class="spec-photo-card">
@@ -1751,19 +1837,54 @@
       <div class="contact-side reveal">
         <p class="eyebrow">Contatti</p>
         <h2>Prenota la tua visita</h2>
-        <p>Scrivici per informazioni o per fissare un appuntamento: ti risponderemo al più presto. Per richieste urgenti, il modo più rapido resta la telefonata.</p>
+        <p>Chiamaci per informazioni o per fissare un appuntamento: il telefono resta il modo più rapido per essere ricontattati.</p>
 
         <!-- Finché il form resta nascosto, i blocchi contatto occupano tutta la larghezza in riga invece che in colonna stretta (vedi .contact-blocks nel CSS) -->
+        <!--
         <div class="contact-blocks">
           <div class="contact-block">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             <div><span class="label">Telefono</span><a class="value" href="tel:+393926917777">392 691 7777</a></div>
           </div>
           <div class="contact-block">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-            <div><span class="label">Email</span><a class="value" href="mailto:info@sebastianorecalcati.it">info@sebastianorecalcati.it</a></div>
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><span class="label">Indirizzo</span><span class="value">Via Raffaello Sanzio 5, 23900 Lecco</span></div>
           </div>
-          <div class="contact-block">
+        </div>
+        Email volontariamente non mostrata: il cliente vuole ricevere richieste solo per telefono, per evitare messaggi/email non pertinenti. -->
+
+        <!-- Mockup A e C scartati (vedi i 3 mockup di confronto), tenuti qui per riferimento:
+        <p class="mockup-label">Mockup A — lista pulita, senza card</p>
+        <div class="contact-mockup contact-mockup-a">
+          <div class="cm-a-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div><span class="label">Telefono</span><a class="value" href="tel:+393926917777">392 691 7777</a></div>
+          </div>
+          <div class="cm-a-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><span class="label">Indirizzo</span><span class="value">Via Raffaello Sanzio 5, 23900 Lecco</span></div>
+          </div>
+          <a href="tel:+393926917777" class="btn btn-primary cm-a-btn">Chiama ora</a>
+        </div>
+
+        <p class="mockup-label">Mockup C — telefono in evidenza, indirizzo come nota</p>
+        <div class="contact-mockup contact-mockup-c">
+          <span class="cm-c-label">Chiamaci</span>
+          <a href="tel:+393926917777" class="cm-c-phone">392 691 7777</a>
+          <div class="cm-c-address">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Via Raffaello Sanzio 5, 23900 Lecco</span>
+          </div>
+        </div>
+        -->
+
+        <div class="contact-mockup contact-mockup-b">
+          <div class="cm-b-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div><span class="label">Telefono</span><a class="value" href="tel:+393926917777">392 691 7777</a></div>
+          </div>
+          <div class="cm-b-divider"></div>
+          <div class="cm-b-item">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             <div><span class="label">Indirizzo</span><span class="value">Via Raffaello Sanzio 5, 23900 Lecco</span></div>
           </div>
@@ -1834,7 +1955,7 @@
         <div class="footer-col">
           <h4>Contatti</h4>
           <a href="tel:+393926917777">392 691 7777</a>
-          <a href="mailto:info@sebastianorecalcati.it">info@sebastianorecalcati.it</a>
+          <!-- Email volutamente non mostrata: solo contatto telefonico, vedi nota sopra. -->
         </div>
         <div class="footer-col">
           <h4>Legale</h4>
@@ -1960,12 +2081,20 @@
         track.scrollBy({left: dir * (slides[0].offsetWidth + 24), behavior: 'smooth'});
       });
     });
+    const chips = Array.from(document.querySelectorAll('.concern-chip'));
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        const i = parseInt(chip.dataset.slide, 10);
+        if (slides[i]) slides[i].scrollIntoView({behavior: 'smooth', inline: 'start', block: 'nearest'});
+      });
+    });
     const specSliderIO = new IntersectionObserver((entries) => {
       const visible = entries.filter(e => e.isIntersecting);
       if (!visible.length) return;
       const top = visible.reduce((a, b) => b.intersectionRatio > a.intersectionRatio ? b : a);
       const idx = slides.indexOf(top.target);
       dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      chips.forEach(c => c.classList.toggle('active', parseInt(c.dataset.slide, 10) === idx));
     }, {root: track, threshold: 0.6});
     slides.forEach(s => specSliderIO.observe(s));
     initSliderAutoplay(track, {interval: 3000});
@@ -2138,7 +2267,7 @@
 </script>
 
 
-  <!-- STICKY WHATSAPP -->
+  <!-- STICKY WHATSAPP: nascosto su richiesta del cliente (vuole ricevere richieste solo per telefono, per evitare messaggi non pertinenti).
   <a
     class="whatsapp-float"
     href="https://wa.me/393926917777?text=Ciao%2C%20vorrei%20ricevere%20informazioni%20per%20una%20visita%20dermatologica."
@@ -2152,6 +2281,8 @@
     </svg>
     <span>WhatsApp</span>
   </a>
+  -->
+
 
   <!-- COOKIE BANNER -->
   <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Preferenze cookie">
@@ -2183,10 +2314,10 @@
       <p class="privacy-updated">Ultimo aggiornamento: 20 agosto 2026</p>
 
       <h3>Titolare del trattamento</h3>
-      <p>Dott. Sebastiano Recalcati — Studio DERMATOLOGICA, Via Raffaello Sanzio 5, 23900 Lecco (LC). Telefono 392 691 7777, email <a href="mailto:info@sebastianorecalcati.it">info@sebastianorecalcati.it</a>.</p>
+      <p>Dott. Sebastiano Recalcati — Studio DERMATOLOGICA, Via Raffaello Sanzio 5, 23900 Lecco (LC). Telefono 392 691 7777.</p>
 
       <h3>Quali dati raccogliamo</h3>
-      <p>Quando ci contatti — telefonicamente, via email o tramite eventuali altri strumenti che il sito potrà mettere a disposizione in futuro — ci fornisci alcuni dati personali: ad esempio nome e cognome, recapito telefonico o email, ed eventuali informazioni relative al motivo della richiesta o alla tua situazione. Queste ultime possono indirettamente riferirsi a condizioni di salute: in tal caso rientrano tra le categorie particolari di dati personali (art. 9 del Regolamento UE 2016/679) e vengono trattate con la massima riservatezza, solo per organizzare la tua visita.</p>
+      <p>Quando ci contatti telefonicamente, o tramite eventuali altri strumenti che il sito potrà mettere a disposizione in futuro, ci fornisci alcuni dati personali: ad esempio nome e cognome, recapito telefonico, ed eventuali informazioni relative al motivo della richiesta o alla tua situazione. Queste ultime possono indirettamente riferirsi a condizioni di salute: in tal caso rientrano tra le categorie particolari di dati personali (art. 9 del Regolamento UE 2016/679) e vengono trattate con la massima riservatezza, solo per organizzare la tua visita.</p>
 
       <h3>Perché li trattiamo</h3>
       <ul>
@@ -2208,7 +2339,7 @@
       <p>Il sito integra una mappa di Google Maps nella sezione "Studio", caricata solo previo tuo consenso esplicito: se la attivi, Google può trattare alcuni dati tecnici (ad esempio l'indirizzo IP) secondo la propria informativa. Puoi gestire questa scelta in qualsiasi momento da "Preferenze cookie" in fondo alla pagina.</p>
 
       <h3>I tuoi diritti</h3>
-      <p>In qualsiasi momento puoi chiederci di accedere ai tuoi dati, correggerli, cancellarli, limitarne il trattamento, opporti al trattamento o richiederne la portabilità, scrivendo a <a href="mailto:info@sebastianorecalcati.it">info@sebastianorecalcati.it</a>. Hai inoltre diritto di proporre reclamo al Garante per la protezione dei dati personali (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">www.garanteprivacy.it</a>) qualora ritieni che il trattamento violi la normativa vigente.</p>
+      <p>In qualsiasi momento puoi chiederci di accedere ai tuoi dati, correggerli, cancellarli, limitarne il trattamento, opporti al trattamento o richiederne la portabilità, contattandoci telefonicamente al numero <a href="tel:+393926917777">392 691 7777</a>. Hai inoltre diritto di proporre reclamo al Garante per la protezione dei dati personali (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">www.garanteprivacy.it</a>) qualora ritieni che il trattamento violi la normativa vigente.</p>
 
       <h3>Modifiche a questa informativa</h3>
       <p>Questa informativa può essere aggiornata nel tempo, ad esempio per adeguamenti normativi o cambi nei servizi utilizzati sul sito. La data di ultimo aggiornamento è indicata in cima al testo.</p>
